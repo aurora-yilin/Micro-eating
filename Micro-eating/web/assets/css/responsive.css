@@ -1,0 +1,1783 @@
+@media only screen and (max-width: 767px) {
+  /*-- Default CSS --*/
+  body {
+    font-size: 14px;
+  }
+  .ptb-100 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .pt-100 {
+    padding-top: 50px;
+  }
+  .pb-70 {
+    padding-bottom: 20px;
+  }
+  .pb-100 {
+    padding-bottom: 50px;
+  }
+  /*-- End Default CSS --*/
+  /*----- Home One CSS -----*/
+  /*-- Navbar --*/
+  .main-nav nav .navbar-nav .nav-item a {
+    font-size: 14px;
+  }
+  .main-nav nav .side-nav {
+    display: none;
+  }
+  .mean-container .mean-bar {
+    background-color: #0b0320;
+  }
+  .mobile-nav.mean-container .mean-nav ul li a.active {
+    color: #ffbe00;
+  }
+  .mean-container .mean-nav .navbar-nav {
+    height: 350px;
+    overflow-y: scroll;
+  }
+  .mean-container a.meanmenu-reveal span {
+    position: relative;
+    top: 8px;
+    margin-top: -6px;
+  }
+  /*-- End Navbar --*/
+  /*-- Banner --*/
+  .banner-area {
+    height: 100%;
+    padding-top: 125px;
+    padding-bottom: 100px;
+  }
+  .banner-area .banner-shape img:nth-child(1) {
+    display: none;
+  }
+  .banner-area .banner-shape img:nth-child(2) {
+    display: none;
+  }
+  .banner-area .banner-shape img:nth-child(4) {
+    display: none;
+  }
+  .banner-area .banner-content {
+    text-align: center;
+  }
+  .banner-area .banner-content h1 {
+    font-size: 35px;
+  }
+  .banner-area .banner-content form .form-control {
+    font-size: 14px;
+    padding-left: 20px;
+    height: 60px;
+  }
+  .banner-area .banner-content form .banner-form-btn {
+    padding: 12px 14px;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    font-size: 14px;
+  }
+  .banner-area .banner-slider {
+    display: none;
+  }
+  /*-- End Banner --*/
+  /*-- Feature --*/
+  .section-title {
+    margin-bottom: 35px;
+    margin-top: -4px;
+  }
+  .section-title .sub-title {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .section-title h2 {
+    font-size: 25px;
+    margin-bottom: 12px;
+  }
+  .feature-area .section-title {
+    text-align: center;
+  }
+  .feature-area .section-title p {
+    margin-left: auto;
+  }
+  .feature-item .feature-inner {
+    bottom: 15px;
+    max-width: 265px;
+  }
+  .feature-item .feature-inner ul li img {
+    top: -1px;
+  }
+  .feature-item .feature-inner ul li span {
+    font-size: 16px;
+    margin-left: 8px;
+  }
+  .feature-item .feature-inner ul li a {
+    width: 35px;
+    height: 35px;
+    line-height: 40px;
+    font-size: 21px;
+  }
+  /*-- End Feature --*/
+  /*-- Service --*/
+  .service-area .service-item {
+    padding: 32px 15px 30px;
+  }
+  .service-area .service-slider .owl-prev {
+    display: none !important;
+  }
+  .service-area .service-slider .owl-next {
+    display: none !important;
+  }
+  /*-- End Service --*/
+  /*-- Restant--*/
+  .restant-area {
+    padding-top: 95px;
+    padding-bottom: 50px;
+  }
+  .restant-area .restant-shape img {
+    max-width: 75px;
+  }
+  .restant-area .restant-content {
+    padding-left: 0;
+    text-align: center;
+    max-width: 100%;
+  }
+  .restant-area .restant-content .section-title {
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  .restant-area .restant-content .section-title p {
+    margin-left: auto;
+  }
+  .restant-area .restant-img {
+    margin-bottom: 75px;
+  }
+  .restant-area .restant-img img:nth-child(1) {
+    max-width: 285px;
+  }
+  .restant-area .restant-img img:nth-child(2) {
+    top: -45px;
+    max-width: 185px;
+  }
+  .restant-area .restant-img img:nth-child(3) {
+    display: none;
+  }
+  .restant-area .restant-img img:nth-child(4) {
+    max-width: 190px;
+    bottom: -85px;
+  }
+  .restant-area .restant-img img:nth-child(5) {
+    display: none;
+  }
+  .cmn-btn {
+    font-size: 14px;
+  }
+  /*-- End Restant --*/
+  /*-- Collection --*/
+  .collection-area .more-collection a {
+    font-size: 15px;
+  }
+  .collection-item .collection-bottom {
+    padding: 15px 15px 17px;
+  }
+  .collection-item .collection-bottom h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .collection-item .collection-bottom ul {
+    vertical-align: middle;
+  }
+  .collection-item .collection-bottom ul li span {
+    font-size: 22px;
+  }
+  .collection-item .collection-bottom ul li .minus, .collection-item .collection-bottom ul li .plus {
+    width: 30px;
+    height: 30px;
+    line-height: 31px;
+    font-size: 20px;
+  }
+  .collection-item .collection-bottom ul li .form-control {
+    width: 40px;
+  }
+  .sorting-menu ul {
+    margin-bottom: 30px;
+  }
+  .sorting-menu ul li {
+    font-size: 14px;
+    padding: 7px 20px;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+  /*-- End Collection --*/
+  /*-- Menu --*/
+  .menu-item {
+    padding: 35px 25px 32px;
+    border: 1px solid #ffbe00;
+  }
+  .menu-item img {
+    margin-bottom: 22px;
+  }
+  /*-- End Menu --*/
+  /*-- Reservation --*/
+  .reservation-area {
+    border-radius: 0 0 20px 0;
+  }
+  .reservation-area .reservation-item {
+    padding-top: 50px;
+    padding-bottom: 30px;
+  }
+  .reservation-area .reservation-item .section-title {
+    text-align: center;
+    margin-bottom: 35px;
+  }
+  .reservation-area .reservation-item .section-title p {
+    margin-left: auto;
+  }
+  .reservation-area .reservation-item ul {
+    padding: 20px 10px 10px 10px;
+    border-radius: 5px;
+  }
+  .reservation-area .reservation-item ul li {
+    margin-bottom: 10px;
+    display: block;
+  }
+  .reservation-area .reservation-item ul li .form-control {
+    width: 100%;
+  }
+  .reservation-area .reservation-item ul li:first-child {
+    padding-right: 0;
+    margin-right: 0;
+  }
+  .reservation-area .reservation-item ul li:first-child:before {
+    display: none;
+  }
+  .reservation-area .reservation-img {
+    position: relative;
+    top: 0;
+    padding-bottom: 40px;
+  }
+  /*-- End Reservation --*/
+  /*-- Chef --*/
+  .chef-area {
+    padding-top: 50px;
+  }
+  .chef-item .chef-bottom ul li:nth-child(1) {
+    opacity: 1;
+    z-index: 1;
+    bottom: 0;
+  }
+  .chef-item .chef-bottom ul li:nth-child(2) {
+    opacity: 1;
+    z-index: 1;
+    bottom: 0;
+  }
+  .chef-item .chef-bottom ul li:nth-child(3) {
+    bottom: -10px;
+    opacity: 1;
+    z-index: 1;
+    bottom: 0;
+  }
+  /*-- End Chef --*/
+  /*-- Review --*/
+  .review-area .slick-prev i {
+    left: 110px;
+  }
+  .review-area .slick-next i {
+    right: 110px;
+  }
+  .review-area .review-img img:nth-child(2) {
+    top: 12px;
+  }
+  .review-area .review-item {
+    padding-top: 30px;
+    padding-bottom: 33px;
+  }
+  .review-area .review-item .slider-nav {
+    margin-bottom: 25px;
+  }
+  .review-area .review-item .slider-for p {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  /*-- End Review --*/
+  /*-- Blog --*/
+  .blog-item .blog-bottom {
+    padding: 28px 8px 45px 15px;
+  }
+  .blog-item .blog-bottom h3 {
+    font-size: 20px;
+  }
+  .blog-area .read-blog-btn {
+    font-size: 15px;
+  }
+  /*-- End Blog --*/
+  /*-- Subscribe --*/
+  .subscribe-area {
+    border-radius: 0 0 20px 0;
+  }
+  .subscribe-item {
+    padding-top: 50px;
+    padding-bottom: 30px;
+  }
+  .subscribe-item .section-title {
+    text-align: center;
+  }
+  .subscribe-item .section-title p {
+    margin-left: auto;
+  }
+  .subscribe-item .newsletter-form .form-control {
+    height: 55px;
+    padding: 5px 15px 5px 15px;
+    font-size: 15px;
+  }
+  .subscribe-item .newsletter-form .cmn-btn {
+    right: 8px;
+    top: 6px;
+    padding: 10px 25px;
+  }
+  .subscribe-item .social-link ul {
+    text-align: center;
+  }
+  .subscribe-img {
+    padding-bottom: 40px;
+  }
+  /*-- End Subscribe --*/
+  /*-- Footer --*/
+  .footer-item .footer-service h3 {
+    margin-bottom: 20px;
+  }
+  /*-- End Footer --*/
+  /*-- Copyright --*/
+  .copyright-area {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 20px 20px 0 0;
+  }
+  /*-- End Copyright --*/
+  /*----- End Home One CSS -----*/
+  /*----- Home Two CSS -----*/
+  /*-- Navbar --*/
+  #myModalRight {
+    display: none;
+  }
+  /*-- End Navbar --*/
+  /*-- Banner --*/
+  .banner-area-two .banner-shape img:nth-child(3) {
+    left: 0;
+  }
+  .banner-area-two .banner-content {
+    padding-top: 115px;
+    padding-bottom: 70px;
+    text-align: center;
+  }
+  .banner-area-two .banner-content h1 {
+    font-size: 30px;
+  }
+  .banner-area-two .banner-content p {
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .banner-area-two .banner-content .banner-btn-wrap .cmn-btn {
+    margin-right: 10px;
+  }
+  .banner-area-two .banner-content .banner-btn-wrap .banner-btn-two {
+    padding: 11px 20px;
+  }
+  .banner-area-two .banner-img {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+  }
+  .banner-area-two .banner-img img {
+    max-width: 100%;
+  }
+  /*-- End Banner --*/
+  /*-- Food Image --*/
+  .food-img-area {
+    margin-top: 50px;
+  }
+  /*-- End Food Image --*/
+  /*-- About --*/
+  .about-area .about-shape {
+    display: none;
+  }
+  .about-area .about-img {
+    position: relative;
+    text-align: center;
+  }
+  .about-area .about-img img:nth-child(1) {
+    display: none;
+  }
+  .about-area .about-img img:nth-child(2) {
+    max-width: 100%;
+    right: 0;
+  }
+  .about-area .about-content {
+    margin-top: 31px;
+    padding-left: 0;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .about-area .about-content .section-title {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  .about-area .about-content .section-title h2 {
+    margin-bottom: 20px;
+  }
+  .about-area .about-content .section-title p {
+    margin-left: auto;
+  }
+  /*-- End About --*/
+  /*-- Download --*/
+  .download-area .download-content .section-title {
+    text-align: center;
+  }
+  .download-area .download-content ul li {
+    padding: 10px 15px 10px;
+    font-size: 17px;
+  }
+  .download-area .download-content ul li:hover {
+    margin-left: 0;
+  }
+  .download-area .download-content ul li span {
+    width: 45px;
+    height: 45px;
+    line-height: 47px;
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  .download-area .download-content .app-wrap {
+    margin-top: 30px;
+  }
+  .download-area .download-content .app-wrap a {
+    margin-right: 10px;
+    max-width: 130px;
+  }
+  /*-- End Download --*/
+  /*-- Join --*/
+  .join-area {
+    margin-top: 50px;
+  }
+  .join-area .join-img img {
+    position: relative;
+    top: -60px;
+    max-width: 100%;
+  }
+  .join-area .join-content {
+    padding-top: 0px;
+    padding-bottom: 50px;
+    margin-top: -30px;
+    text-align: center;
+  }
+  .join-area .join-content .section-title {
+    text-align: center;
+  }
+  .join-area .join-content .section-title p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .chef-area-two {
+    padding-top: 50px;
+  }
+  /*-- End Join --*/
+  /*-- Review --*/
+  .review-area-two {
+    padding-top: 50px;
+  }
+  .review-area-two .review-shape img {
+    max-width: 100px;
+  }
+  .review-area-two .review-img {
+    text-align: center;
+  }
+  .review-area-two .review-img img {
+    border-radius: 42px;
+  }
+  .review-area-two .review-item {
+    padding-top: 30px;
+    padding-bottom: 94px;
+  }
+  .review-area-two .slick-prev i {
+    left: 90px;
+    bottom: -120px;
+  }
+  .review-area-two .slick-next i {
+    right: 90px;
+    bottom: -120px;
+  }
+  /*-- End Review --*/
+  /*-- Footer --*/
+  .footer-area-two {
+    border-radius: 20px 20px 0 0;
+  }
+  /*-- End Footer --*/
+  /*-- Copyright --*/
+  .copyright-area-two {
+    border-radius: 0;
+  }
+  /*-- End Copyright --*/
+  /*----- End Home Two CSS -----*/
+  /*----- Home Three CSS -----*/
+  /*-- Banner --*/
+  .banner-area-three .banner-shape img:nth-child(1) {
+    display: none;
+  }
+  .banner-area-three .banner-shape img:nth-child(2) {
+    top: 74px;
+    max-width: 62px;
+  }
+  .banner-area-three .banner-shape img:nth-child(3) {
+    bottom: 0;
+    right: 0;
+    max-width: 90px;
+  }
+  .banner-area-three .banner-content {
+    padding-top: 115px;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+  .banner-area-three .banner-content h1 {
+    font-size: 28px;
+  }
+  .banner-area-three .banner-content p {
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .banner-area-three .banner-content .banner-btn-wrap .cmn-btn {
+    margin-right: 10px;
+  }
+  .banner-area-three .banner-content .banner-btn-wrap .banner-btn-two {
+    padding: 11px 20px;
+  }
+  .banner-area-three .banner-img {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    padding-bottom: 80px;
+  }
+  .banner-area-three .banner-img img {
+    max-width: 100%;
+  }
+  /*-- End Banner --*/
+  /*-- About --*/
+  .about-area-two .about-shape img {
+    bottom: 0;
+    right: 0;
+    max-width: 130px;
+  }
+  .about-area-two .about-img {
+    margin-bottom: 75px;
+    text-align: center;
+  }
+  .about-area-two .about-img img:nth-child(1) {
+    max-width: 100%;
+    top: 0;
+  }
+  .about-area-two .about-img img:nth-child(2) {
+    display: none;
+  }
+  .about-area-two .about-img .video-wrap {
+    bottom: -45px;
+    right: 0;
+    left: 0;
+  }
+  .about-area-two .about-img .video-wrap a {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .about-area-two .about-content {
+    padding-left: 0;
+    text-align: center;
+  }
+  .about-area-two .about-content .section-title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  /*-- End About --*/
+  /*-- Service --*/
+  .service-area-three .service-item .accordion a {
+    font-size: 14px;
+  }
+  .service-area-three .service-item .accordion a span {
+    font-size: 14px;
+  }
+  .service-area-three .service-img img {
+    max-width: 100%;
+  }
+  .join-area-two {
+    margin-top: 60px;
+  }
+  /*-- End Service --*/
+  /*----- End Home Three CSS -----*/
+  /*----- About CSS -----*/
+  /*-- Page Title --*/
+  .page-title-area {
+    padding-top: 150px;
+    padding-bottom: 110px;
+  }
+  .page-title-item {
+    padding-left: 30px;
+  }
+  .page-title-item:before {
+    width: 5px;
+    height: 77px;
+  }
+  .page-title-item h2 {
+    font-size: 30px;
+    margin-bottom: 6px;
+  }
+  /*-- End Page Title --*/
+  /*-- Story --*/
+  .story-area .story-shape img {
+    max-width: 75px;
+  }
+  .story-area .story-head {
+    margin-bottom: 35px;
+  }
+  .story-area .story-head h2 {
+    font-size: 25px;
+    margin-bottom: 15px;
+    margin-top: -6px;
+  }
+  .story-area .story-item h3 {
+    font-size: 16px;
+    max-width: 245px;
+    padding: 12px;
+    bottom: 20px;
+  }
+  /*-- End Story --*/
+  /*-- Download --*/
+  .download-area-two {
+    border-radius: 0 0 20px 0;
+  }
+  .download-area-two .download-item {
+    text-align: center;
+  }
+  .download-area-two .download-item h2 {
+    font-size: 25px;
+    margin-bottom: 35px;
+  }
+  .download-area-two .download-item ul li {
+    margin-right: 15px;
+  }
+  .download-area-two .download-item ul li a {
+    max-width: 130px;
+  }
+  .download-area-two .download-img {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .download-area-two .download-img img {
+    position: relative;
+    top: 0;
+    right: 0;
+    left: 0;
+    max-width: 100%;
+  }
+  /*-- End Download --*/
+  /*----- End About CSS -----*/
+  /*----- Service Details CSS -----*/
+  /*-- Page Title --*/
+  .page-title-area-two:before {
+    display: none;
+  }
+  .page-title-area-two .page-title-plate {
+    display: none;
+  }
+  /*-- End Page Title --*/
+  /*-- Service Details --*/
+  .service-details-area .service-details-item .service-details-more h3 {
+    margin-bottom: 25px;
+  }
+  .service-details-area .service-details-item .service-details-more ul li a {
+    font-size: 14px;
+  }
+  .service-details-area .service-details-item .service-details-fresh {
+    text-align: center;
+  }
+  .service-details-area .service-details-item .service-details-fresh h2 {
+    font-size: 25px;
+  }
+  /*-- End Service Details --*/
+  /*----- End Service Details CSS -----*/
+  /*----- Blog Details CSS -----*/
+  /*-- Page Title --*/
+  .page-title-img-two:before {
+    -webkit-clip-path: polygon(0 0, 79% 0%, 55% 100%, 0% 100%);
+            clip-path: polygon(0 0, 79% 0%, 55% 100%, 0% 100%);
+  }
+  /*-- End Page Title --*/
+  /*-- Service Details --*/
+  .blog-details-more {
+    padding-bottom: 20px;
+  }
+  .blog-details-nav ul li a {
+    font-size: 14px;
+  }
+  /*-- End Service Details --*/
+  /*----- End Blog Details CSS -----*/
+  /*----- Cart CSS -----*/
+  /*-- Table --*/
+  .cart-wrap {
+    text-align: center;
+  }
+  .cart-wrap .table .thead tr .table-head {
+    font-size: 13px;
+    padding-right: 4px;
+    padding-left: 4px;
+  }
+  .cart-wrap .table tr td {
+    font-size: 14px;
+  }
+  .cart-wrap .shop-back {
+    margin-bottom: 15px;
+  }
+  .cart-wrap .shop-back a {
+    margin-top: 15px;
+  }
+  .cart-wrap .total-shopping h2 {
+    font-size: 25px;
+    margin-bottom: 15px;
+  }
+  .cart-wrap .total-shopping h3 {
+    font-size: 18px;
+  }
+  .cart-wrap .total-shopping a {
+    font-size: 14px;
+    padding: 14px 25px;
+  }
+  /*-- End Table --*/
+  /*----- End Cart CSS -----*/
+  /*----- Checkout CSS -----*/
+  /*-- Checkout --*/
+  .checkout-item h2 {
+    font-size: 25px;
+    padding-top: 10px;
+    padding-bottom: 14px;
+    margin-bottom: 30px;
+  }
+  .checkout-item .checkout-one {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+  .checkout-item .checkout-one label {
+    font-size: 14px;
+    margin-right: 7px;
+  }
+  .checkout-item .checkout-one .form-group .form-control {
+    width: 64%;
+  }
+  .checkout-item .checkout-two {
+    max-width: 100%;
+    padding: 0 10px 30px;
+  }
+  .checkout-item .checkout-two h3 {
+    margin-bottom: 12px;
+    font-size: 20px;
+  }
+  .checkout-item .checkout-two p {
+    font-size: 14px;
+  }
+  .checkout-item .checkout-two .form-check span {
+    font-size: 14px;
+  }
+  .checkout-item .checkout-two .form-check .form-check-input {
+    margin-top: 3px;
+  }
+  /*-- End Checkout --*/
+  /*----- End Checkout CSS -----*/
+  /*----- Coming Soon CSS -----*/
+  /*-- Coming --*/
+  .coming-item {
+    height: 100vh;
+  }
+  .coming-item h1 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  .coming-item .coming-wrap {
+    margin-bottom: 20px;
+  }
+  .coming-item .coming-wrap .coming-inner h3 {
+    font-size: 35px;
+  }
+  .coming-item .coming-wrap .coming-inner p {
+    font-size: 14px;
+  }
+  /*-- End Coming --*/
+  /*----- End Coming Soon CSS -----*/
+  /*----- FAQ CSS -----*/
+  /*-- FAQ --*/
+  .faq-area .faq-head h2 {
+    margin-bottom: 30px;
+    font-size: 25px;
+  }
+  .faq-area .accordion p {
+    font-size: 14px;
+    padding: 12px 12px 12px 18px;
+  }
+  .faq-area .accordion a {
+    font-size: 15px;
+  }
+  /*-- End FAQ --*/
+  /*----- End FAQ CSS -----*/
+  /*----- Terms & Conditions CSS -----*/
+  /*-- Terms --*/
+  .privacy-area {
+    padding-bottom: 0;
+  }
+  .privacy-item {
+    margin-bottom: 50px;
+  }
+  .privacy-item h2 {
+    font-size: 22px;
+  }
+  /*-- End Terms --*/
+  /*----- End Terms & Conditions CSS -----*/
+  /*----- 404 CSS -----*/
+  /*-- 404 --*/
+  .error-item {
+    height: 480px;
+  }
+  .error-item h1 {
+    font-size: 80px;
+    margin-bottom: 0;
+  }
+  .error-item p {
+    font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .error-item a {
+    padding: 13px 25px;
+    margin-top: 30px;
+    font-size: 14px;
+  }
+  /*-- End 404 --*/
+  /*----- End 404 CSS -----*/
+  /*----- Contact CSS -----*/
+  /*-- Location --*/
+  .contact-location-area .location-item {
+    padding: 40px 15px 40px;
+    border: 1px solid #ffbe00;
+  }
+  /*-- End Location --*/
+  /*-- Form --*/
+  .contact-form-area .contact-item {
+    padding: 30px 15px;
+  }
+  .contact-form-area .contact-item #contactForm {
+    margin-bottom: 20px;
+  }
+  .contact-form-area .contact-item #contactForm .form-group .form-control {
+    height: 50px;
+    padding-left: 25px;
+    font-size: 14px;
+  }
+  .contact-form-area .contact-item .text-danger {
+    font-size: 16px;
+  }
+  .contact-form-area .contact-item .text-success {
+    font-size: 16px;
+  }
+  .contact-form-area .contact-img img {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 50px;
+  }
+  .book-table-area .book-table-wrap {
+    padding: 30px 10px 35px;
+  }
+  /*-- End Form --*/
+  /*----- End Contact CSS -----*/
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .service-area .service-item h3 {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /*-- Default CSS --*/
+  body {
+    font-size: 14px;
+  }
+  .ptb-100 {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .pt-100 {
+    padding-top: 70px;
+  }
+  .pb-70 {
+    padding-bottom: 40px;
+  }
+  .pb-100 {
+    padding-bottom: 70px;
+  }
+  /*-- End Default CSS --*/
+  /*----- Home One CSS -----*/
+  /*-- Navbar --*/
+  .main-nav nav .navbar-nav .nav-item a {
+    font-size: 14px;
+  }
+  .main-nav nav .side-nav {
+    display: none;
+  }
+  .mean-container .mean-bar {
+    background-color: #0b0320;
+  }
+  .mobile-nav.mean-container .mean-nav ul li a.active {
+    color: #ffbe00;
+  }
+  .mean-container .mean-nav .navbar-nav {
+    height: 350px;
+    overflow-y: scroll;
+  }
+  .mean-container a.meanmenu-reveal span {
+    position: relative;
+    top: 8px;
+    margin-top: -6px;
+  }
+  /*-- End Navbar --*/
+  /*-- Banner --*/
+  .banner-area {
+    height: 100%;
+    padding-top: 110px;
+    padding-bottom: 70px;
+  }
+  .banner-area .banner-shape img:nth-child(1) {
+    display: none;
+  }
+  .banner-area .banner-shape img:nth-child(2) {
+    display: none;
+  }
+  .banner-area .banner-shape img:nth-child(4) {
+    display: none;
+  }
+  .banner-area .banner-content {
+    text-align: center;
+  }
+  .banner-area .banner-content h1 {
+    font-size: 35px;
+  }
+  .banner-area .banner-content form .form-control {
+    font-size: 14px;
+    padding-left: 20px;
+    height: 60px;
+  }
+  .banner-area .banner-content form .banner-form-btn {
+    padding: 12px 14px;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    font-size: 14px;
+  }
+  .banner-area .banner-slider {
+    display: none;
+  }
+  /*-- End Banner --*/
+  /*-- Feature --*/
+  .section-title {
+    margin-bottom: 40px;
+    margin-top: -2px;
+  }
+  .section-title .sub-title {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .section-title h2 {
+    font-size: 30px;
+    margin-bottom: 12px;
+  }
+  .feature-area .section-title {
+    text-align: center;
+  }
+  .feature-area .section-title p {
+    margin-left: auto;
+  }
+  .feature-item .feature-inner {
+    bottom: 15px;
+    max-width: 265px;
+  }
+  .feature-item .feature-inner ul li img {
+    top: -1px;
+  }
+  .feature-item .feature-inner ul li span {
+    font-size: 16px;
+    margin-left: 8px;
+  }
+  .feature-item .feature-inner ul li a {
+    width: 35px;
+    height: 35px;
+    line-height: 40px;
+    font-size: 21px;
+  }
+  /*-- End Feature --*/
+  /*-- Service --*/
+  .service-area .service-slider .owl-prev {
+    display: none !important;
+  }
+  .service-area .service-slider .owl-next {
+    display: none !important;
+  }
+  /*-- End Service --*/
+  /*-- Restant--*/
+  .restant-area {
+    padding-top: 115px;
+    padding-bottom: 70px;
+  }
+  .restant-area .restant-shape img {
+    max-width: 100px;
+  }
+  .restant-area .restant-content {
+    padding-left: 0;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .restant-area .restant-content .section-title {
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  .restant-area .restant-content .section-title p {
+    margin-left: auto;
+  }
+  .restant-area .restant-img {
+    margin-bottom: 75px;
+  }
+  .restant-area .restant-img img:nth-child(1) {
+    max-width: 100%;
+  }
+  .restant-area .restant-img img:nth-child(2) {
+    top: -45px;
+    max-width: 210px;
+  }
+  .restant-area .restant-img img:nth-child(3) {
+    top: 260px;
+    right: -36px;
+    max-width: 195px;
+  }
+  .restant-area .restant-img img:nth-child(4) {
+    max-width: 220px;
+    bottom: -85px;
+  }
+  .restant-area .restant-img img:nth-child(5) {
+    top: 245px;
+    max-width: 230px;
+  }
+  .cmn-btn {
+    font-size: 14px;
+  }
+  /*-- End Restant --*/
+  /*-- Collection --*/
+  .collection-area .more-collection a {
+    font-size: 15px;
+  }
+  .collection-item .collection-bottom {
+    padding: 15px 15px 17px;
+  }
+  .collection-item .collection-bottom h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .collection-item .collection-bottom ul {
+    vertical-align: middle;
+  }
+  .collection-item .collection-bottom ul li span {
+    font-size: 22px;
+  }
+  .collection-item .collection-bottom ul li .minus, .collection-item .collection-bottom ul li .plus {
+    width: 30px;
+    height: 30px;
+    line-height: 31px;
+    font-size: 20px;
+  }
+  .collection-item .collection-bottom ul li .form-control {
+    width: 40px;
+  }
+  .sorting-menu ul {
+    margin-bottom: 30px;
+  }
+  .sorting-menu ul li {
+    font-size: 14px;
+    padding: 7px 20px;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+  /*-- End Collection --*/
+  /*-- Reservation --*/
+  .reservation-area {
+    border-radius: 0 0 20px 0;
+  }
+  .reservation-area .reservation-item {
+    padding-top: 70px;
+    padding-bottom: 30px;
+  }
+  .reservation-area .reservation-item .section-title {
+    text-align: center;
+    margin-bottom: 35px;
+  }
+  .reservation-area .reservation-item .section-title p {
+    margin-left: auto;
+  }
+  .reservation-area .reservation-img {
+    position: relative;
+    top: 0;
+    padding-bottom: 60px;
+  }
+  /*-- End Reservation --*/
+  /*-- Chef --*/
+  .chef-area {
+    padding-top: 70px;
+  }
+  .chef-item .chef-bottom ul li:nth-child(1) {
+    opacity: 1;
+    z-index: 1;
+    bottom: 0;
+  }
+  .chef-item .chef-bottom ul li:nth-child(2) {
+    opacity: 1;
+    z-index: 1;
+    bottom: 0;
+  }
+  .chef-item .chef-bottom ul li:nth-child(3) {
+    bottom: -10px;
+    opacity: 1;
+    z-index: 1;
+    bottom: 0;
+  }
+  /*-- End Chef --*/
+  /*-- Review --*/
+  .review-area .slick-prev i {
+    left: 230px;
+  }
+  .review-area .slick-next i {
+    right: 230px;
+  }
+  .review-area .review-img img:nth-child(2) {
+    top: 12px;
+    right: 25px;
+  }
+  .review-area .review-item {
+    padding-top: 30px;
+    padding-bottom: 45px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .review-area .review-item .slider-nav {
+    margin-bottom: 25px;
+  }
+  .review-area .review-item .slider-for p {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  /*-- End Review --*/
+  /*-- Subscribe --*/
+  .subscribe-area {
+    border-radius: 0 0 20px 0;
+  }
+  .subscribe-item {
+    padding-top: 70px;
+    padding-bottom: 30px;
+  }
+  .subscribe-item .section-title {
+    text-align: center;
+  }
+  .subscribe-item .section-title p {
+    margin-left: auto;
+  }
+  .subscribe-item .newsletter-form .form-control {
+    height: 55px;
+    padding: 5px 15px 5px 30px;
+    font-size: 15px;
+  }
+  .subscribe-item .newsletter-form .cmn-btn {
+    right: 8px;
+    top: 6px;
+    padding: 10px 25px;
+  }
+  .subscribe-item .social-link ul {
+    text-align: center;
+  }
+  .subscribe-img {
+    padding-bottom: 60px;
+  }
+  /*-- End Subscribe --*/
+  /*-- Footer --*/
+  .footer-item .footer-service h3 {
+    margin-bottom: 20px;
+  }
+  /*-- End Footer --*/
+  /*-- Copyright --*/
+  .copyright-area {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 20px 20px 0 0;
+  }
+  /*-- End Copyright --*/
+  /*----- End Home One CSS -----*/
+  /*----- Home Two CSS -----*/
+  /*-- Navbar --*/
+  #myModalRight {
+    display: none;
+  }
+  /*-- End Navbar --*/
+  /*-- Banner --*/
+  .banner-area-two .banner-shape img:nth-child(3) {
+    left: 0;
+  }
+  .banner-area-two .banner-content {
+    padding-top: 115px;
+    padding-bottom: 70px;
+    text-align: center;
+  }
+  .banner-area-two .banner-content h1 {
+    font-size: 42px;
+  }
+  .banner-area-two .banner-content p {
+    margin-bottom: 30px;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .banner-area-two .banner-img {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+  }
+  .banner-area-two .banner-img img {
+    max-width: 100%;
+  }
+  /*-- End Banner --*/
+  /*-- Food Image --*/
+  .food-img-area {
+    margin-top: 70px;
+  }
+  /*-- End Food Image --*/
+  /*-- About --*/
+  .about-area .about-shape {
+    display: none;
+  }
+  .about-area .about-img img:nth-child(2) {
+    max-width: 100%;
+  }
+  .about-area .about-content {
+    margin-top: 31px;
+    padding-left: 0;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .about-area .about-content .section-title {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  .about-area .about-content .section-title h2 {
+    margin-bottom: 20px;
+  }
+  .about-area .about-content .section-title p {
+    margin-left: auto;
+  }
+  /*-- End About --*/
+  /*-- Download --*/
+  .download-area .download-content .section-title {
+    text-align: center;
+  }
+  .download-area .download-content ul li {
+    padding: 10px 15px 10px;
+    font-size: 17px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .download-area .download-content ul li:hover {
+    margin-left: 0;
+  }
+  .download-area .download-content ul li span {
+    width: 45px;
+    height: 45px;
+    line-height: 47px;
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  .download-area .download-content .app-wrap {
+    margin-top: 30px;
+    text-align: center;
+  }
+  .download-area .download-content .app-wrap a {
+    margin-right: 10px;
+    max-width: 130px;
+  }
+  .download-area .download-img {
+    text-align: center;
+  }
+  /*-- End Download --*/
+  /*-- Join --*/
+  .join-area {
+    margin-top: 60px;
+  }
+  .join-area .join-img img {
+    position: relative;
+    top: -60px;
+    max-width: 100%;
+  }
+  .join-area .join-content {
+    padding-top: 0px;
+    padding-bottom: 50px;
+    margin-top: -30px;
+    text-align: center;
+  }
+  .join-area .join-content .section-title {
+    text-align: center;
+  }
+  .join-area .join-content .section-title p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .chef-area-two {
+    padding-top: 70px;
+  }
+  /*-- End Join --*/
+  /*-- Review --*/
+  .review-area-two {
+    padding-top: 70px;
+  }
+  .review-area-two .review-shape img {
+    max-width: 100px;
+  }
+  .review-area-two .review-img {
+    text-align: center;
+  }
+  .review-area-two .review-img img {
+    border-radius: 42px;
+  }
+  .review-area-two .review-item {
+    padding-top: 30px;
+    padding-bottom: 135px;
+  }
+  .review-area-two .slick-prev i {
+    left: 215px;
+    bottom: -120px;
+  }
+  .review-area-two .slick-next i {
+    right: 215px;
+    bottom: -120px;
+  }
+  /*-- End Review --*/
+  /*-- Footer --*/
+  .footer-area-two {
+    border-radius: 20px 20px 0 0;
+  }
+  /*-- End Footer --*/
+  /*-- Copyright --*/
+  .copyright-area-two {
+    border-radius: 0;
+  }
+  /*-- End Copyright --*/
+  /*----- End Home Two CSS -----*/
+  /*----- Home Three CSS -----*/
+  /*-- Banner --*/
+  .banner-area-three .banner-shape img:nth-child(1) {
+    display: none;
+  }
+  .banner-area-three .banner-shape img:nth-child(2) {
+    top: 74px;
+    max-width: 62px;
+  }
+  .banner-area-three .banner-shape img:nth-child(3) {
+    bottom: 0;
+    right: 0;
+    max-width: 90px;
+  }
+  .banner-area-three .banner-content {
+    padding-top: 115px;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+  .banner-area-three .banner-content h1 {
+    font-size: 38px;
+  }
+  .banner-area-three .banner-content p {
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .banner-area-three .banner-content .banner-btn-wrap .cmn-btn {
+    margin-right: 10px;
+  }
+  .banner-area-three .banner-content .banner-btn-wrap .banner-btn-two {
+    padding: 11px 20px;
+  }
+  .banner-area-three .banner-img {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    padding-bottom: 80px;
+  }
+  .banner-area-three .banner-img img {
+    max-width: 100%;
+  }
+  /*-- End Banner --*/
+  /*-- About --*/
+  .about-area-two .about-shape img {
+    bottom: 0;
+    right: 0;
+    max-width: 130px;
+  }
+  .about-area-two .about-img {
+    margin-bottom: 75px;
+    text-align: center;
+  }
+  .about-area-two .about-img img:nth-child(1) {
+    max-width: 100%;
+    top: 0;
+  }
+  .about-area-two .about-img img:nth-child(2) {
+    display: none;
+  }
+  .about-area-two .about-img .video-wrap {
+    bottom: -45px;
+    right: 0;
+    left: 0;
+  }
+  .about-area-two .about-img .video-wrap a {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .about-area-two .about-content {
+    padding-left: 0;
+    text-align: center;
+  }
+  .about-area-two .about-content .section-title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  /*-- End About --*/
+  /*-- Service --*/
+  .service-area-three .service-item .accordion a {
+    font-size: 14px;
+  }
+  .service-area-three .service-item .accordion a span {
+    font-size: 14px;
+  }
+  .service-area-three .service-img img {
+    max-width: 100%;
+  }
+  .join-area-two {
+    margin-top: 60px;
+  }
+  /*-- End Service --*/
+  /*----- End Home Three CSS -----*/
+  /*----- About CSS -----*/
+  /*-- Page Title --*/
+  .page-title-area {
+    padding-top: 150px;
+    padding-bottom: 110px;
+  }
+  .page-title-item {
+    padding-left: 30px;
+  }
+  .page-title-item:before {
+    width: 5px;
+    height: 77px;
+  }
+  .page-title-item h2 {
+    font-size: 30px;
+    margin-bottom: 6px;
+  }
+  /*-- End Page Title --*/
+  /*-- Story --*/
+  .story-area .story-shape img {
+    max-width: 75px;
+  }
+  .story-area .story-head {
+    margin-bottom: 35px;
+  }
+  .story-area .story-head h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+    margin-top: -8px;
+  }
+  .story-area .story-item h3 {
+    font-size: 16px;
+    max-width: 245px;
+    padding: 12px;
+    bottom: 20px;
+  }
+  /*-- End Story --*/
+  /*-- Download --*/
+  .download-area-two {
+    border-radius: 0 0 20px 0;
+  }
+  .download-area-two .download-item {
+    text-align: center;
+  }
+  .download-area-two .download-item h2 {
+    font-size: 25px;
+    margin-bottom: 35px;
+  }
+  .download-area-two .download-item ul li {
+    margin-right: 15px;
+  }
+  .download-area-two .download-item ul li a {
+    max-width: 130px;
+  }
+  .download-area-two .download-img {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .download-area-two .download-img img {
+    position: relative;
+    top: 0;
+    right: 0;
+    left: 0;
+    max-width: 100%;
+  }
+  /*-- End Download --*/
+  /*----- End About CSS -----*/
+  /*----- Service Details CSS -----*/
+  /*-- Page Title --*/
+  .page-title-area-two:before {
+    display: none;
+  }
+  .page-title-area-two .page-title-plate {
+    display: none;
+  }
+  /*-- End Page Title --*/
+  /*-- Service Details --*/
+  .service-details-area .service-details-item .service-details-more h3 {
+    margin-bottom: 25px;
+  }
+  .service-details-area .service-details-item .service-details-more ul li a {
+    font-size: 14px;
+  }
+  .service-details-area .service-details-item .service-details-fresh {
+    text-align: center;
+  }
+  .service-details-area .service-details-item .service-details-fresh h2 {
+    font-size: 25px;
+  }
+  /*-- End Service Details --*/
+  /*----- End Service Details CSS -----*/
+  /*----- Blog Details CSS -----*/
+  /*-- Service Details --*/
+  .blog-details-more {
+    padding-bottom: 20px;
+  }
+  .blog-details-nav ul li a {
+    font-size: 14px;
+  }
+  /*-- End Service Details --*/
+  /*----- End Blog Details CSS -----*/
+  /*----- Checkout CSS -----*/
+  /*-- Checkout --*/
+  .checkout-item h2 {
+    font-size: 30px;
+  }
+  .checkout-item .checkout-one {
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .checkout-item .checkout-two {
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  /*-- End Checkout --*/
+  /*----- End Checkout CSS -----*/
+  /*----- Coming Soon CSS -----*/
+  /*-- Coming --*/
+  .coming-item {
+    height: 100vh;
+  }
+  .coming-item h1 {
+    font-size: 35px;
+    margin-bottom: 12px;
+  }
+  .coming-item .coming-wrap {
+    margin-bottom: 20px;
+  }
+  .coming-item .coming-wrap .coming-inner h3 {
+    font-size: 35px;
+  }
+  .coming-item .coming-wrap .coming-inner p {
+    font-size: 14px;
+  }
+  /*-- End Coming --*/
+  /*----- End Coming Soon CSS -----*/
+  /*----- FAQ CSS -----*/
+  /*-- FAQ --*/
+  .faq-area .faq-head h2 {
+    margin-bottom: 30px;
+    font-size: 30px;
+  }
+  .faq-area .accordion p {
+    font-size: 14px;
+    padding: 12px 12px 12px 18px;
+  }
+  .faq-area .accordion a {
+    font-size: 15px;
+  }
+  /*-- End FAQ --*/
+  /*----- End FAQ CSS -----*/
+  /*----- Terms & Conditions CSS -----*/
+  /*-- Terms --*/
+  .privacy-area {
+    padding-bottom: 20px;
+  }
+  .privacy-item {
+    margin-bottom: 50px;
+  }
+  .privacy-item h2 {
+    font-size: 22px;
+  }
+  /*-- End Terms --*/
+  /*----- End Terms & Conditions CSS -----*/
+  /*----- 404 CSS -----*/
+  /*-- 404 --*/
+  .error-item {
+    height: 480px;
+  }
+  .error-item h1 {
+    font-size: 80px;
+    margin-bottom: 0;
+  }
+  .error-item p {
+    font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .error-item a {
+    padding: 13px 25px;
+    margin-top: 30px;
+    font-size: 14px;
+  }
+  /*-- End 404 --*/
+  /*----- End 404 CSS -----*/
+  /*----- Contact CSS -----*/
+  /*-- Location --*/
+  .contact-location-area .location-item {
+    padding: 40px 15px 40px;
+    border: 1px solid #ffbe00;
+  }
+  /*-- End Location --*/
+  /*-- Form --*/
+  .contact-form-area .contact-item {
+    padding: 30px 15px;
+  }
+  .contact-form-area .contact-item #contactForm {
+    margin-bottom: 20px;
+  }
+  .contact-form-area .contact-item #contactForm .form-group .form-control {
+    height: 50px;
+    padding-left: 25px;
+    font-size: 14px;
+  }
+  .contact-form-area .contact-item .text-danger {
+    font-size: 18px;
+  }
+  .contact-form-area .contact-item .text-success {
+    font-size: 18px;
+  }
+  .contact-form-area .contact-img img {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 70px;
+  }
+  .book-table-area .book-table-wrap {
+    padding: 40px 30px 45px;
+  }
+  /*-- End Form --*/
+  /*----- End Contact CSS -----*/
+  .reservation-area .reservation-item ul {
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .main-nav nav .navbar-nav .nav-item a {
+    font-size: 14px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .main-nav nav .side-nav .nav-tel {
+    margin-left: 10px;
+  }
+  .feature-item .feature-inner {
+    max-width: 265px;
+  }
+  .service-area .service-slider .owl-prev {
+    display: none;
+  }
+  .service-area .service-slider .owl-next {
+    display: none;
+  }
+  .collection-item .collection-bottom {
+    padding: 15px 10px 17px;
+  }
+  .collection-item .collection-bottom h3 {
+    font-size: 16px;
+  }
+  .reservation-area .reservation-item ul li:last-child .cmn-btn {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+  .review-area .slick-prev i {
+    left: 185px;
+  }
+  .review-area .slick-next i {
+    right: 185px;
+  }
+  .banner-area-two .banner-img img {
+    max-width: 350px;
+  }
+  .join-area .join-img img {
+    top: -95px;
+  }
+  .banner-area-three .banner-img img {
+    max-width: 340px;
+  }
+  .service-area-three .service-item .accordion a {
+    font-size: 14px;
+  }
+  .checkout-item .checkout-one {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .checkout-item .checkout-two {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .checkout-item .checkout-one .form-group .form-control {
+    width: 75%;
+  }
+  .banner-area .banner-content h1 {
+    font-size: 50px;
+  }
+  .banner-area .banner-shape img:nth-child(4) {
+    display: none;
+  }
+  .reservation-area .reservation-item ul {
+    padding: 20px 11px 20px 20px;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .banner-area-three .banner-img img {
+    max-width: 100%;
+  }
+}
+/*# sourceMappingURL=responsive.css.map */

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyl.mapper.UserMapper">
+
+    <resultMap id="userResultMap" type="com.lyl.entity.UserDetailsImpl">
+        <result property="userName" column="user_name"></result>
+        <result property="password" column="password"></result>
+        <result property="email" column="email"></result>
+        <result property="headImage" column="head_image"></result>
+        <result property="phoneNum" column="phone_num"></result>
+
+<!--        一对多的集合中参数类型为八种基本类型的话需要使用构造参数来进行赋值-->
+<!--        此处写法有顺序，<collection>标签位于其它标签之后-->
+        <collection property="userAuthority" ofType="string">
+            <constructor>
+                <arg column="authority_name"/>
+            </constructor>
+        </collection>
+    </resultMap>
+    
+    <select id="selectUserByUnOrPn" resultMap="userResultMap" parameterType="string">
+        SELECT
+        user_a.user_name,user_a.password,user_a.email,user_a.head_image,user_a.phone_num,authority.authority_name
+        FROM
+            (SELECT
+            u.user_name,u.password,u.email,u.head_image,u.phone_num,ua.authority_id
+            FROM
+            user u
+            LEFT JOIN
+            user_authority ua
+            ON
+            u.user_name=ua.user_name
+            WHERE
+            u.user_name=#{principal} or u.phone_num=#{principal})
+        AS
+        user_a
+        LEFT JOIN
+        authority
+        ON
+        user_a.authority_id=authority.authority_id
+    </select>
+
+<!--    <insert id="saveUser" parameterType="com.oruol.blog.entity.User">-->
+<!--        insert into user(user_name,password,authority,email)-->
+<!--        values(#{user.userName},#{user.password},#{user.userAuthority},#{user.email})-->
+<!--    </insert>-->
+    <select id="judgeMobileNumIsExist" resultType="integer" parameterType="string">
+        SELECT COUNT(*) FROM user WHERE phone_num=#{mobileNum}
+    </select>
+</mapper>
