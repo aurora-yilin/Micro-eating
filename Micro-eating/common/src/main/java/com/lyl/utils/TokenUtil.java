@@ -28,8 +28,9 @@ public class TokenUtil {
     }
 
     /**
-     * 添加信息到载荷中
+     * 添加用户名和权限到token中
      * @param userName
+     * @param permissions
      * @return
      */
     public String generateToken(String userName, Collection permissions){

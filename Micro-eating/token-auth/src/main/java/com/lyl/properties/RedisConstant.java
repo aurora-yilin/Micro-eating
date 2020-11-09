@@ -1,7 +1,6 @@
 package com.lyl.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,28 +8,27 @@ import org.springframework.stereotype.Component;
  * @Date 2020/10/1 9:32
  */
 @Component
-@RefreshScope
 @ConfigurationProperties(prefix = "redis.constant")
 public class RedisConstant {
 
-    public static String smsCode = "smsCode";
+    private String smsCode = "smsCode";
 
-    public static String charString = "0123456789";
+    private String charString = "0123456789";
 
-    public static String charLength = "6";
+    private String charLength = "6";
 
-    public static String imageCode = "imageCode";
+    private String imageCode = "imageCode";
 
-    public static String smsCodeExpire = "15";
+    private String smsCodeExpire = "15";
 
-    public static String imageCodeExpire = "5";
+    private String imageCodeExpire = "5";
 
     public String getSmsCode() {
         return smsCode;
     }
 
     public void setSmsCode(String smsCode) {
-        RedisConstant.smsCode = smsCode;
+        this.smsCode = smsCode;
     }
 
     public String getCharString() {
@@ -38,7 +36,7 @@ public class RedisConstant {
     }
 
     public void setCharString(String charString) {
-        RedisConstant.charString = charString;
+        this.charString = charString;
     }
 
     public String getCharLength() {
@@ -46,7 +44,7 @@ public class RedisConstant {
     }
 
     public void setCharLength(String charLength) {
-        RedisConstant.charLength = charLength;
+        this.charLength = charLength;
     }
 
     public String getImageCode() {
@@ -54,7 +52,7 @@ public class RedisConstant {
     }
 
     public void setImageCode(String imageCode) {
-        RedisConstant.imageCode = imageCode;
+        this.imageCode = imageCode;
     }
 
     public String getSmsCodeExpire() {
@@ -62,7 +60,7 @@ public class RedisConstant {
     }
 
     public void setSmsCodeExpire(String smsCodeExpire) {
-        RedisConstant.smsCodeExpire = smsCodeExpire;
+        this.smsCodeExpire = smsCodeExpire;
     }
 
     public String getImageCodeExpire() {
@@ -70,6 +68,6 @@ public class RedisConstant {
     }
 
     public void setImageCodeExpire(String imageCodeExpire) {
-        RedisConstant.imageCodeExpire = imageCodeExpire;
+        this.imageCodeExpire = imageCodeExpire;
     }
 }

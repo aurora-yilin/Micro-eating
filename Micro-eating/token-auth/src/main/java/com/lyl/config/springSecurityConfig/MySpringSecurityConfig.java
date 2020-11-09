@@ -37,6 +37,9 @@ public class MySpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Resource
     SmsSecurityConfig smsSecurityConfig;
 
+    @Resource
+    LoginParametersConstant loginParametersConstant;
+
     @Bean
     public PasswordEncoder getPasswordEncoder(){
         return new BCryptPasswordEncoder();
@@ -90,9 +93,9 @@ public class MySpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
-                .loginProcessingUrl(LoginParametersConstant.loginProcessingUrl)
-                .usernameParameter(LoginParametersConstant.usernameParameter)
-                .passwordParameter(LoginParametersConstant.passwordParameter)
+                .loginProcessingUrl(loginParametersConstant.getLoginProcessingUrl())
+                .usernameParameter(loginParametersConstant.getUsernameParameter())
+                .passwordParameter(loginParametersConstant.getPasswordParameter())
                 .successHandler(getAuthenticationSuccessHandler())
                 .failureHandler(getAuthenticationFailureHandler())
                 .and()
@@ -108,7 +111,7 @@ public class MySpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-//    private TokenUtil getTokenUtil(){
+    //    private TokenUtil getTokenUtil(){
 //        return new TokenUtil.Builder()
 //                .setSecret(TokenConstant.secret)
 //                .setHeader(TokenConstant.header)

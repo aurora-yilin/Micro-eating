@@ -3,8 +3,11 @@ package com.lyl.config.utilConfig;
 import com.lyl.properties.RedisConstant;
 import com.lyl.properties.VerificationCodeConstant;
 import com.lyl.utils.VerificationCodeUtil;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import javax.annotation.Resource;
 
 /**
  * @author lyl
@@ -13,21 +16,29 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class VerificationCodeUtilConfig {
 
+    @Resource
+    private VerificationCodeConstant verificationCodeConstant;
+
+    @Resource
+    private RedisConstant redisConstant;
+
     @Bean("createImageVerificationCodeUtil")
+    @RefreshScope
     public VerificationCodeUtil createImageVerificationCodeUtil(){
         return new VerificationCodeUtil.Builder()
-                .setWidth(VerificationCodeConstant.width)
-                .setHeight(VerificationCodeConstant.height)
-                .setCharString(VerificationCodeConstant.charString)
-                .setCharLength(VerificationCodeConstant.charLength)
+                .setWidth(verificationCodeConstant.getWidth())
+                .setHeight(verificationCodeConstant.getHeight())
+                .setCharString(verificationCodeConstant.getCharString())
+                .setCharLength(verificationCodeConstant.getCharLength())
                 .build();
     }
 
     @Bean("createSmsCodeUtil")
+    @RefreshScope
     public VerificationCodeUtil createSmsCodeUtil(){
         return new VerificationCodeUtil.Builder()
-                .setCharLength(RedisConstant.charLength)
-                .setCharString(RedisConstant.charString)
+                .setCharLength(redisConstant.getCharLength())
+                .setCharString(redisConstant.getCharString())
                 .build();
     }
 }

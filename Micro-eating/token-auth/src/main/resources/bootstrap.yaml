@@ -107,19 +107,20 @@ mybatis:
 #    smsCode: smsCode
 #    smsCodeExpire: 15
 #
-##kaptcha的自定义配置
-#kaptcha:
-#  charLength: 4;
-#  charString: 0123456789;
-#  height: 50;
-#  width: 150;
-#
-login:
-  parameter:
-    loginProcessingUrl: /login
-    mobileCode: mobileCode
-    mobileNum: mobileNum
-    passwordParameter: password
-    smsLoginProcessingUrl: /smsLogin
-    usernameParameter: userName
-    loginCode: code
+##图像验证码的配置
+image:
+  code:
+    charLength: 4
+    charString: 0123456789
+    height: 50
+    width: 150
+
+#login:
+#  parameter:
+#    loginProcessingUrl: /login
+#    mobileCode: mobileCode
+#    mobileNum: mobileNum
+#    passwordParameter: password
+#    smsLoginProcessingUrl: /smsLogin
+#    usernameParameter: userName
+#    loginCode: code

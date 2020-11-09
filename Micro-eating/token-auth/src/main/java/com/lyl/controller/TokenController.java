@@ -9,12 +9,14 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -100,11 +102,34 @@ public class TokenController {
      * 用户第一次访问网站的时候调用该接口返回一个专属于该匿名用户的token用于标记临时菜单
      * @return
      */
-    @PostMapping("anonymityToken")
+    @GetMapping("/anonymityToken")
     public ResultType getAnonymityToken(){
         String replace = UUID.randomUUID().toString().replace("-", "");
         String tempToken = tokenUtil.generateToken(replace, null);
         return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(),CommonEnum.SUCCESS.getMsg(),tempToken);
     }
 
+    @PostMapping("/ParsingToken")
+    public ResultType ParsingTokenGetUserNameAndPermissions(@RequestHeader("tokenHeader")String token){
+        String userNameFromToken = null;
+        Collection permissionsFromToken = null;
+        try {
+            userNameFromToken = tokenUtil.getUserNameFromToken(token);
+            permissionsFromToken = tokenUtil.getPermissionsFromToken(token);
+        }catch (ExpiredJwtException e) {
+            throw e;
+        } catch (UnsupportedJwtException e) {
+            throw e;
+        } catch (MalformedJwtException e) {
+            throw e;
+        } catch (SignatureException e) {
+            throw e;
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+        HashMap<String, Object> userInfo = new HashMap<>();
+        userInfo.put("userName",userNameFromToken);
+        userInfo.put("permissions",permissionsFromToken);
+        return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(),CommonEnum.SUCCESS.getMsg(),userInfo);
+    }
 }

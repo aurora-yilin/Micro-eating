@@ -3,7 +3,10 @@ package com.lyl.config.springSecurityConfig.sms;
 import com.lyl.config.springSecurityConfig.GeneralAuthenticationFailureHandler;
 import com.lyl.config.springSecurityConfig.GeneralAuthenticationSuccessHandler;
 import com.lyl.enums.CommonEnum;
+import com.lyl.properties.LoginParametersConstant;
 import com.lyl.utils.TokenUtil;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,6 +23,7 @@ import javax.annotation.Resource;
  * @author lyl
  * @Date 2020/9/29 16:56
  */
+@Configuration
 @Component
 public class SmsSecurityConfig
         extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
@@ -27,9 +31,11 @@ public class SmsSecurityConfig
     @Resource(name = "createTokenUtil")
     private TokenUtil tokenUtil;
 
-    @Resource
-    SmsAuthenticationProvider smsAuthenticationProvider;
+//    @Resource
+//    SmsAuthenticationProvider smsAuthenticationProvider;
 
+    @Resource
+    private LoginParametersConstant loginParametersConstant;
 //    @Resource
 //    SmsCheckLoginVerificationCodeFilter smsCheckLoginVerificationCodeFilter;
 
@@ -38,15 +44,14 @@ public class SmsSecurityConfig
 
     @Override
     public void configure(HttpSecurity builder) throws Exception {
-        SmsAuthenticationFilter smsAuthenticationFilter = new SmsAuthenticationFilter();
+        SmsAuthenticationFilter smsAuthenticationFilter = new SmsAuthenticationFilter(loginParametersConstant);
         smsAuthenticationFilter.setAuthenticationManager(builder.getSharedObject(AuthenticationManager.class));
         smsAuthenticationFilter.setAuthenticationSuccessHandler(getAuthenticationSuccessHandler());
         smsAuthenticationFilter.setAuthenticationFailureHandler(getAuthenticationFailureHandler());
 
-//        SmsAuthenticationProvider smsAuthenticationProvider = new SmsAuthenticationProvider();
-        smsAuthenticationProvider.setUserDetailsService(userDetailsService);
+//        smsAuthenticationProvider.setUserDetailsService(userDetailsService);
 
-        builder.authenticationProvider(smsAuthenticationProvider);
+        builder.authenticationProvider(createSmsAuthenticationProvider());
 
 //        builder.addFilterBefore(smsCheckLoginVerificationCodeFilter, UsernamePasswordAuthenticationFilter.class);
         builder.addFilterAfter(smsAuthenticationFilter,UsernamePasswordAuthenticationFilter.class);
@@ -78,4 +83,11 @@ public class SmsSecurityConfig
 //                .setExpiration(TokenConstant.expiration)
 //                .build();
 //    }
+
+    @Bean
+    public SmsAuthenticationProvider createSmsAuthenticationProvider(){
+        SmsAuthenticationProvider smsAuthenticationProvider = new SmsAuthenticationProvider();
+        smsAuthenticationProvider.setUserDetailsService(userDetailsService);
+        return smsAuthenticationProvider;
+    }
 }

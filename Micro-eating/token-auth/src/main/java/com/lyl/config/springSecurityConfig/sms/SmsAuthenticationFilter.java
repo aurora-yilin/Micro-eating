@@ -16,20 +16,30 @@ import javax.servlet.http.HttpServletResponse;
  * @author lyl
  * @Date 2020/9/28 22:30
  */
+//@Component
 public class SmsAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
     // ~ Static fields/initializers
     // =====================================================================================
+    private LoginParametersConstant loginParametersConstant;
 
-    public static final String SPRING_SECURITY_FORM_MOBIL_KEY = LoginParametersConstant.mobileNum;
+    public static final String SPRING_SECURITY_FORM_MOBIL_KEY = "mobileNum";
     private String mobilParameter = SPRING_SECURITY_FORM_MOBIL_KEY;
     private boolean postOnly = true;
 
     // ~ Constructors
     // ===================================================================================================
 
-    public SmsAuthenticationFilter() {
-        super(new AntPathRequestMatcher(LoginParametersConstant.smsLoginProcessingUrl, "POST"));
+
+//    @Autowired
+//    public void setLoginParametersConstant(LoginParametersConstant loginParametersConstant) {
+//        this.loginParametersConstant = loginParametersConstant;
+//    }
+
+//    @Autowired
+    public SmsAuthenticationFilter(LoginParametersConstant loginParametersConstant) {
+        super(new AntPathRequestMatcher(loginParametersConstant.getSmsLoginProcessingUrl(), "POST"));
+        mobilParameter = loginParametersConstant.getMobileNum();
     }
 
     // ~ Methods

@@ -1,41 +1,32 @@
 package com.lyl.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 
 /**
  * @author lyl
  * @Date 2020/10/1 15:26
  */
+//@RefreshScope
 @Component
-@RefreshScope
 @ConfigurationProperties(prefix = "login.parameter")
 public class LoginParametersConstant {
 
-    public static String mobileCode="mobileCode";
-    public static String mobileNum="mobileNum";
-    public static String smsLoginProcessingUrl="/smsLogin";
+    private String mobileCode="mobileCode";
+    private String mobileNum="mobileNum";
+    private String smsLoginProcessingUrl="/smsLogin";
 
-    public static String loginProcessingUrl="/login";
-    public static String usernameParameter="userName";
-    public static String passwordParameter="password";
-    public static String loginCode="code";
-
-    public String getLoginCode() {
-        return loginCode;
-    }
-
-    public void setLoginCode(String loginCode) {
-        LoginParametersConstant.loginCode = loginCode;
-    }
+    private String loginProcessingUrl="/login";
+    private String usernameParameter="userName";
+    private String passwordParameter="password";
+    private String loginCode="code";
 
     public String getMobileCode() {
         return mobileCode;
     }
 
     public void setMobileCode(String mobileCode) {
-        LoginParametersConstant.mobileCode = mobileCode;
+        this.mobileCode = mobileCode;
     }
 
     public String getMobileNum() {
@@ -43,7 +34,7 @@ public class LoginParametersConstant {
     }
 
     public void setMobileNum(String mobileNum) {
-        LoginParametersConstant.mobileNum = mobileNum;
+        this.mobileNum = mobileNum;
     }
 
     public String getSmsLoginProcessingUrl() {
@@ -51,7 +42,7 @@ public class LoginParametersConstant {
     }
 
     public void setSmsLoginProcessingUrl(String smsLoginProcessingUrl) {
-        LoginParametersConstant.smsLoginProcessingUrl = smsLoginProcessingUrl;
+        this.smsLoginProcessingUrl = smsLoginProcessingUrl;
     }
 
     public String getLoginProcessingUrl() {
@@ -59,7 +50,7 @@ public class LoginParametersConstant {
     }
 
     public void setLoginProcessingUrl(String loginProcessingUrl) {
-        LoginParametersConstant.loginProcessingUrl = loginProcessingUrl;
+        this.loginProcessingUrl = loginProcessingUrl;
     }
 
     public String getUsernameParameter() {
@@ -67,14 +58,22 @@ public class LoginParametersConstant {
     }
 
     public void setUsernameParameter(String usernameParameter) {
-        LoginParametersConstant.usernameParameter = usernameParameter;
+        this.usernameParameter = usernameParameter;
     }
 
-    public static String getPasswordParameter() {
+    public String getPasswordParameter() {
         return passwordParameter;
     }
 
     public void setPasswordParameter(String passwordParameter) {
-        LoginParametersConstant.passwordParameter = passwordParameter;
+        this.passwordParameter = passwordParameter;
+    }
+
+    public String getLoginCode() {
+        return loginCode;
+    }
+
+    public void setLoginCode(String loginCode) {
+        this.loginCode = loginCode;
     }
 }

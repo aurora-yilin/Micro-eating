@@ -11,6 +11,7 @@ import com.lyl.properties.RedisConstant;
 import com.lyl.exception.MyIOException;
 import com.lyl.utils.VerificationCodeUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,22 +32,26 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @RestController
+@RefreshScope
 public class VerifyCodeController {
 
     /**
      * 验证码生成工具类
      */
     @Resource(name = "createImageVerificationCodeUtil")
-    VerificationCodeUtil imageVerificationCodeUtil;
+    private VerificationCodeUtil imageVerificationCodeUtil;
 
     @Resource(name = "createSmsCodeUtil")
-    VerificationCodeUtil smsCodeUtil;
+    private VerificationCodeUtil smsCodeUtil;
 
     @Resource
-    RedisTemplate redisTemplate;
+    private RedisTemplate redisTemplate;
 
     @Resource
-    UserMapper userMapper;
+    private UserMapper userMapper;
+
+    @Resource
+    private RedisConstant redisConstant;
 
     /**
      * 验证码图片的请求接口
@@ -60,9 +65,9 @@ public class VerifyCodeController {
         resp.setContentType("image/jpeg");
         Producer producer = imageVerificationCodeUtil.verifyCode();
         String text = producer.createText();
-        redisTemplate.opsForValue().set(RedisConstant.imageCode+":"+userName,
+        redisTemplate.opsForValue().set(redisConstant.getImageCode()+":"+userName,
                 text,
-                Integer.parseInt(RedisConstant.imageCodeExpire),
+                Integer.parseInt(redisConstant.getImageCodeExpire()),
                 TimeUnit.MINUTES);
         final BufferedImage image = producer.createImage(text);
         try(ServletOutputStream outputStream = resp.getOutputStream()){
@@ -83,9 +88,9 @@ public class VerifyCodeController {
         }
         final Producer producer = smsCodeUtil.verifyCode();
         final String text = producer.createText();
-        redisTemplate.opsForValue().set(RedisConstant.smsCode+":"+mobileNum,
+        redisTemplate.opsForValue().set(redisConstant.getSmsCode()+":"+mobileNum,
                 text ,
-                Integer.parseInt(RedisConstant.smsCodeExpire),
+                Integer.parseInt(redisConstant.getSmsCodeExpire()),
                 TimeUnit.MINUTES );
         //调用短信发送服务
         log.info("======================="+text);
