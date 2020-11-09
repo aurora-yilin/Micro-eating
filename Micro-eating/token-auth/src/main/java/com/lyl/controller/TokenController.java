@@ -1,5 +1,6 @@
 package com.lyl.controller;
 
+import com.alibaba.druid.util.StringUtils;
 import com.lyl.common.ResultType;
 import com.lyl.config.springSecurityConfig.UserDetailsServiceImpl;
 import com.lyl.enums.CommonEnum;
@@ -40,21 +41,26 @@ public class TokenController {
      */
     @PostMapping("/refreshToken")
     public ResultType refreshToken(@RequestHeader("tokenHeader") String token){
-        String newToken;
-        try {
-            newToken = tokenUtil.refreshToken(token);
-        } catch (ExpiredJwtException e) {
-            throw e;
-        } catch (UnsupportedJwtException e) {
-            throw e;
-        } catch (MalformedJwtException e) {
-            throw e;
-        } catch (SignatureException e) {
-            throw e;
-        } catch (IllegalArgumentException e) {
-            throw e;
+        boolean result = StringUtils.isEmpty(token);
+        if (result) {
+            return ResultType.CLIENTERROR(CommonEnum.CLIENTERROR.getCode(),CommonEnum.CLIENTERROR.getMsg(),null);
+        }else {
+            String newToken;
+            try {
+                newToken = tokenUtil.refreshToken(token);
+            } catch (ExpiredJwtException e) {
+                throw e;
+            } catch (UnsupportedJwtException e) {
+                throw e;
+            } catch (MalformedJwtException e) {
+                throw e;
+            } catch (SignatureException e) {
+                throw e;
+            } catch (IllegalArgumentException e) {
+                throw e;
+            }
+            return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(), CommonEnum.SUCCESS.getMsg(), newToken);
         }
-        return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(),CommonEnum.SUCCESS.getMsg(),newToken);
     }
 
     /**
@@ -64,37 +70,40 @@ public class TokenController {
      */
     @PostMapping("/validationToken")
     public ResultType validationToken(@RequestHeader("tokenHeader")String token){
-        String userNameFromToken;
-        Collection permissionsFromToken;
-        Boolean tokenExpired;
-        try {
-            tokenExpired = tokenUtil.isTokenExpired(token);
-            userNameFromToken = tokenUtil.getUserNameFromToken(token);
-            permissionsFromToken = tokenUtil.getPermissionsFromToken(token);
-        } catch (ExpiredJwtException e) {
-            throw e;
-        } catch (UnsupportedJwtException e) {
-            throw e;
-        } catch (MalformedJwtException e) {
-            throw e;
-        } catch (SignatureException e) {
-            throw e;
-        } catch (IllegalArgumentException e) {
-            throw e;
-        }
-        UserDetails userDetails = userDetailsService.loadUserByUsername(userNameFromToken);
-        Collection<String> authorities = userDetails.getAuthorities().stream().map((authority)->
-                authority.getAuthority())
-                .collect(Collectors.toList());
-        if(tokenExpired){
-            return ResultType.CLIENTERROR(CommonEnum.CLIENTERROR.getCode(),"认证失败",false);
-        }
-        else if(permissionsFromToken.retainAll(authorities) ||
-        authorities.retainAll(permissionsFromToken) || authorities.size() != permissionsFromToken.size()){
-            return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(),"认证通过",true);
-        }
-        else{
-            return ResultType.CLIENTERROR(CommonEnum.CLIENTERROR.getCode(),"认证失败",false);
+        boolean result = StringUtils.isEmpty(token);
+        if (result) {
+            return ResultType.CLIENTERROR(CommonEnum.CLIENTERROR.getCode(),CommonEnum.CLIENTERROR.getMsg(),null);
+        }else {
+            String userNameFromToken;
+            Collection permissionsFromToken;
+            Boolean tokenExpired;
+            try {
+                tokenExpired = tokenUtil.isTokenExpired(token);
+                userNameFromToken = tokenUtil.getUserNameFromToken(token);
+                permissionsFromToken = tokenUtil.getPermissionsFromToken(token);
+            } catch (ExpiredJwtException e) {
+                throw e;
+            } catch (UnsupportedJwtException e) {
+                throw e;
+            } catch (MalformedJwtException e) {
+                throw e;
+            } catch (SignatureException e) {
+                throw e;
+            } catch (IllegalArgumentException e) {
+                throw e;
+            }
+            UserDetails userDetails = userDetailsService.loadUserByUsername(userNameFromToken);
+            Collection<String> authorities = userDetails.getAuthorities().stream().map((authority) ->
+                    authority.getAuthority())
+                    .collect(Collectors.toList());
+            if (tokenExpired) {
+                return ResultType.CLIENTERROR(CommonEnum.CLIENTERROR.getCode(), "认证失败", false);
+            } else if (permissionsFromToken.retainAll(authorities) ||
+                    authorities.retainAll(permissionsFromToken) || authorities.size() != permissionsFromToken.size()) {
+                return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(), "认证通过", true);
+            } else {
+                return ResultType.CLIENTERROR(CommonEnum.CLIENTERROR.getCode(), "认证失败", false);
+            }
         }
     }
 
@@ -111,25 +120,30 @@ public class TokenController {
 
     @PostMapping("/ParsingToken")
     public ResultType ParsingTokenGetUserNameAndPermissions(@RequestHeader("tokenHeader")String token){
-        String userNameFromToken = null;
-        Collection permissionsFromToken = null;
-        try {
-            userNameFromToken = tokenUtil.getUserNameFromToken(token);
-            permissionsFromToken = tokenUtil.getPermissionsFromToken(token);
-        }catch (ExpiredJwtException e) {
-            throw e;
-        } catch (UnsupportedJwtException e) {
-            throw e;
-        } catch (MalformedJwtException e) {
-            throw e;
-        } catch (SignatureException e) {
-            throw e;
-        } catch (IllegalArgumentException e) {
-            throw e;
+        boolean result = StringUtils.isEmpty(token);
+        if (result) {
+            return ResultType.CLIENTERROR(CommonEnum.CLIENTERROR.getCode(),CommonEnum.CLIENTERROR.getMsg(),null);
+        }else {
+            String userNameFromToken = null;
+            Collection permissionsFromToken = null;
+            try {
+                userNameFromToken = tokenUtil.getUserNameFromToken(token);
+                permissionsFromToken = tokenUtil.getPermissionsFromToken(token);
+            } catch (ExpiredJwtException e) {
+                throw e;
+            } catch (UnsupportedJwtException e) {
+                throw e;
+            } catch (MalformedJwtException e) {
+                throw e;
+            } catch (SignatureException e) {
+                throw e;
+            } catch (IllegalArgumentException e) {
+                throw e;
+            }
+            HashMap<String, Object> userInfo = new HashMap<>();
+            userInfo.put("userName", userNameFromToken);
+            userInfo.put("permissions", permissionsFromToken);
+            return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(), CommonEnum.SUCCESS.getMsg(), userInfo);
         }
-        HashMap<String, Object> userInfo = new HashMap<>();
-        userInfo.put("userName",userNameFromToken);
-        userInfo.put("permissions",permissionsFromToken);
-        return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(),CommonEnum.SUCCESS.getMsg(),userInfo);
     }
 }
