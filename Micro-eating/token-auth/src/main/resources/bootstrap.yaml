@@ -25,11 +25,11 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: http://192.168.111.101:8000/lyl/
+        server-addr: http://192.168.111.101:8000
         namespace: 2ba2826d-cdd0-47a6-a853-01d0130f9eb0
         cluster-name: DEFAULT
       config:
-        server-addr: http://192.168.111.101:8000/lyl/
+        server-addr: http://192.168.111.101:8000
         file-extension: yaml
         namespace: 2ba2826d-cdd0-47a6-a853-01d0130f9eb0
         group: DEFAULT_GROUP

@@ -1,11 +1,10 @@
 server:
-  port: 8888
-
+  port: 8889
 spring:
   profiles:
     active: dev
   application:
-    name: Ant-pay-server
+    name: application-consumer
 
   #spring.mvc.static-path-pattern代表的含义是我们应该以什么样的路径来访问静态资源
   # 换句话说，
@@ -89,75 +88,8 @@ management:
       exposure:
         include: '*'
 
-dubbo:
-  scan:
-    base-packages: com.lyl
-  protocol:
-    name: dubbo
-    port: 28888
-  registry:
-    address: nacos://192.168.111.101:8000
-  application:
-    qos-enable: false
-  consumer:
-    check: false
-
 mybatis:
   mapper-locations: classpath:mybatis/mapping/*Mapper.xml
   #设置mybatis的主配置文件的路径
 #  config-location: classpath:mybatis/mybatis-config.xml
 
-#token:
-#  expiration: 10800000
-#  header: tokenHeader
-#  secret: lyltokenAuth
-#
-#redis:
-#  constant:
-#    charLength: 6
-#    charString: 123456789
-#    imageCode: imageCode
-#    imageCodeExpire: 15
-#    smsCode: smsCode
-#    smsCodeExpire: 15
-#
-##kaptcha的自定义配置
-#kaptcha:
-#  charLength: 4;
-#  charString: 0123456789;
-#  height: 50;
-#  width: 150;
-#
-#login:
-#  parameter:
-#    loginProcessingUrl: /login
-#    mobileCode: mobileCode
-#    mobileNum: mobileNum
-#    passwordParameter: password
-#    smsLoginProcessingUrl: /smsLogin
-#    usernameParameter: userName
-
-pay:
-  alipay:
-    #商户应用id
-    appId: 2016110100783029
-    #支付宝网关接口
-    gatewayUrl: https://openapi.alipaydev.com/gateway.do
-    #私钥
-    appPrivateKey: MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCDhKXXHvgSjJNTWTL5R3MVagAG00lqRwhPh6vHGKs7nq+UfG7JivlUhrq5MMJ3Mm0lz3JFjamQ6wCB8LeNmLRxKOVSuYZizVk5F4Dim+RPe8WC+Bq4zYhsyGeN0RncUFLEgY7tK3KTqm8kSBwUaaRHoZJlFcCUyTu+EuVH5dGu/jgZf2OxLpXWugK4K9eVBLeMOnrFGf4sg9C7D7s6ZsIxF/LtZhz8budLH7G/7/+o+iFmYRDzE2z4Y/Vx26DKHA7wG95tfv+gZtaqlFwjRxYVn8N7YjKmpAjDX3uCGDIl9Q6NmNwmq291AHzRC3T4Lr7orIvlRrUXZ9tVxvVfhVTpAgMBAAECggEAYykvdTwXZLzzE8PMaCFUBxBOBtdloij+fiBYBxx1dtVVowoS6gjLpsySmrDF3uN5YinACeser3JQhqh9bNh3LF7eUPoq9fHIVQCAn9tUUA2NRQtV8oKdWw/a7BV9fxxc22an4fCBSg8WD3ADI+zm/U84Ntkow8XaMpzCnOwNpfdWRn1bnpiXLm+WrEHd/E83CbPsmW4armCTUYS0Cq+R7beaatVwWzlPdQSPGc+aMEUi3io8bzxBHhLjI9H1u92xMN9NJjuWIEXWvo1bp9ZzNRw5wZDbGAJzB9T6U/uzPBxGy8hVGMaat+gE5SCx0/mZ9fXKn13Ia+ot59zm7pXppQKBgQDQ2BbPNEzGKAuSFp+5MHGQPckRWm235r7SXt3x4GZxVq4AXwtVNK/xrLPHiLS+IHbiu3BhrJSygn7xKQjjvvRFdFDp8+od4oUtacu6wTWCdgorQS9aJftBa5blngWzPtALvVlfyu7psKjoNwbjaLbXQIy/R5zfyfnZh2BzFOSp7wKBgQChNtoWC35V3uaIPFT9AwzK0vAE6CoUcN4Qryj56iI8lukAVGHHWMjohR+dxqYHDtbgy3r6e6GT8yQWQ3CXDwX2DnLwGChWJn4rJQY6tA38ca4Vx82JVx3cIdCaxtDlHxxALhUXe2M6ffzmzMAmn/Dwi0tSAskpqdJHEtm3Se8mpwKBgFjkUTkawr7pVpt048FYXE4P7mBjhCXtojU6ye9lG1WMln1z9wfqaCVO5Cq/BmeSu+ef7qK0aYpdvxh45d7CbYiOjM430uOrghIlYOD50gPYqFVm5nfRiNN8rvrHOxfjWXxVuQ/r+asgVZSZr2XmMUUHpaDZI22hs6YiWCxDrVyjAoGAFR0A7NgugIKDwJ3eJ5CpsTp08r+RG0I44wh9nlVajILbGw7yC1CGZ2Vf4aLthYkc/S3I+lsMqzqxpDTK3w25oyL7TJRtW/MInQ/pQ/Dm0AP3X6TeNzlwkK7hChQ1sXwkkAc4/e1L7pInd/aix6w0utwTTjdNLyatgl9mogmNx4sCgYB3hNyAdX0O675sAFFmozWFRpRoTCbBvZFSX/J49eUnkLCsIBdOXmIZUds3mLu7jUEpbDIbvuBK1j/+FiBTiV5c8Ph0I19Q/g7K0bq4ogmeSfxb73Ya69dZLoYMePG4Zi8zKVjRCEJbJ7zrRkkosHp2449Rjbw5b/GTaWb/Bz+A5A==
-    #公钥
-    alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoBBkyjeLTLelnvGP1sM+YMTCLSGtW6Wv0Iy+uS9+75QfjF/ccszOm3zLgzqgRMxUZcBJogoDaz+W0JlImhzJm6Pkpr9JEOB7mCauNJawD6Jr1vealxYGR054/3U9thTwvkUyEBFBpMg/bfoT2o9wc2r0CfZy5aala9CD9J+M4tfeq4/NdE/KllWUnISRxMQ+IhBrO9VdqXp/izlkGbfz63TTYmjko3B0N1AUTIWNnv86cyd4rdbg6zNeOEg/wEaR3LT7X2rW+W+af6neycXDgLlE7/+4yWvgAeiMFRx6XwHAve8JiAd5F70JcfsiCx9ysoT3lxXppMY3/lztS6NifQIDAQAB
-    #服务器异步通知页面路径 ，设置为自己网站地址，由于只是本地调试 localhost就可以
-    notifyUrl: http://localhost:8889/alipay/notify
-    #页面跳转同步通知页面路径
-    returnUrl:
-    #编码类型
-    charset: UTF-8
-    #数据类型
-    format: json
-    #签名类型
-    signtype: RSA2
-    #订单超时时间
-    timeoutExpress: 30m
-    #产品类型
-    productCode: QUICK_MSECURITY_PAY

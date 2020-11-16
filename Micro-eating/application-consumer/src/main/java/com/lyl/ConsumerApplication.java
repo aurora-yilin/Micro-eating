@@ -6,17 +6,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * AntPayServerApplication
+ * ConsumerApplication
  *
  * @author lyl
- * @date 2020/11/7 16:42
+ * @date 2020/11/15 15:36
  * @since 1.0.0
  **/
-@MapperScan("com.lyl.mapper")
 @SpringBootApplication
+@MapperScan("com.lyl.mapper")
 @EnableDiscoveryClient
-public class AntPayServerApplication {
+public class ConsumerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(AntPayServerApplication.class,args);
+        SpringApplication.run(ConsumerApplication.class,args);
     }
 }

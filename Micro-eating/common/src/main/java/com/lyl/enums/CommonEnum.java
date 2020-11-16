@@ -10,7 +10,9 @@ public enum CommonEnum {
 
     CLIENTERROR(400,"客户端错误"),
 
-    SERVERERROR(500,"服务端错误");
+    SERVERERROR(500,"服务端错误"),
+
+    ERROR(405,"操作失败");
 
     private int code;
     private String msg;
