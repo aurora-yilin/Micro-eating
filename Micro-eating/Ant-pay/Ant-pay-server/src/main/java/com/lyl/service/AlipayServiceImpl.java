@@ -1,6 +1,5 @@
 package com.lyl.service;
 
-import com.alibaba.dubbo.config.annotation.Service;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.domain.AlipayTradeAppPayModel;
@@ -15,6 +14,7 @@ import com.lyl.enums.CommonEnum;
 import com.lyl.properties.AlipayConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.common.utils.StringUtils;
+import org.apache.dubbo.config.annotation.DubboService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +30,7 @@ import java.util.Map;
  * @since 1.0.0
  **/
 @Slf4j
-@Service
+@DubboService
 public class AlipayServiceImpl implements AlipayService{
 
     @Resource

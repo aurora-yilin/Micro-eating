@@ -1,0 +1,142 @@
+server:
+  port: 8890
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: commodity-info-server
+
+  #spring.mvc.static-path-pattern代表的含义是我们应该以什么样的路径来访问静态资源
+  # 换句话说，
+  # 只有静态资源满足什么样的匹配条件，Spring Boot才会处理静态资源请求
+  #以官方配置为例
+  #这表示只有静态资源的访问路径为/resources/**时，才会处理请求
+  #spring.mvc.static-path-pattern=/resources/**，
+#  mvc:
+#    static-path-pattern: /image/**
+
+  #“spring.resources.static-locations”
+  # 用于告诉Spring Boot应该在何处查找静态资源文件，
+  # 这是一个列表性的配置，查找文件时会依赖于配置的先后顺序依次进行，默认的官方配置如下：
+  #spring.resources.static-locations=
+  # classpath:/static,classpath:/public,classpath:/resources,classpath:/META-INF/resources
+#  resources:
+#    static-locations: file:D:/temporaryFiles/test/
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://192.168.111.101:8000
+        namespace: 2ba2826d-cdd0-47a6-a853-01d0130f9eb0
+        cluster-name: DEFAULT
+      config:
+        server-addr: http://192.168.111.101:8000
+        file-extension: yaml
+        namespace: 2ba2826d-cdd0-47a6-a853-01d0130f9eb0
+        group: DEFAULT_GROUP
+        refresh-enabled: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      #通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+      #配置扩展插件
+      filters: stat,wall
+      #初始化时建立物理连接的个数
+      initial-size: 5
+      #最大连接池数量 maxIdle已经不再使用
+      max-active: 20
+      #当数据库抛出不可恢复的异常时,抛弃该连接
+      #spring.datasource.druid.exception-sorter=true
+      #是否缓存preparedStatement,mysql5.5+建议开启
+      #spring.datasource.druid.pool-prepared-statements=true
+      #当值大于0时poolPreparedStatements会自动修改为true
+      max-pool-prepared-statement-per-connection-size: 20
+      #获取连接时最大等待时间，单位毫秒
+      max-wait: 60000
+      #销毁线程时检测当前连接的最后活动时间和当前时间差大于该值时，关闭当前连接
+      min-evictable-idle-time-millis: 30000
+      #最小连接池数量
+      min-idle: 5
+      #申请连接时会执行validationQuery检测连接是否有效,开启会降低性能,默认为true
+      test-on-borrow: false
+      #归还连接时会执行validationQuery检测连接是否有效,开启会降低性能,默认为true
+      test-on-return: false
+      #申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+      test-while-idle: true
+      #既作为检测的间隔时间又作为testWhileIdel执行的依据
+      time-between-eviction-runs-millis: 60000
+      #合并多个DruidDataSource的监控数据
+      use-global-data-source-stat: true
+      #用来检测连接是否有效的sql 必须是一个查询语句
+      #mysql中为 select 'x'
+      #oracle中为 select 1 from dual
+      validation-query: select 'x'
+      #设置访问druid监控页的账号和密码,默认没有
+#      stat-view-servlet:
+#        login-username: admin
+#        login-password: admin
+    password: Natural;follow
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://47.97.220.234:3306/Micro-eating
+    username: root
+  redis:
+    host: 47.97.220.234
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+dubbo:
+  scan:
+    base-packages: com.lyl
+  protocol:
+    name: dubbo
+    port: 28890
+  registry:
+    address: nacos://192.168.111.101:8000
+  application:
+    qos-enable: false
+  consumer:
+    check: false
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapping/*Mapper.xml
+  #设置mybatis的主配置文件的路径
+#  config-location: classpath:mybatis/mybatis-config.xml
+
+#token:
+#  expiration: 10800000
+#  header: tokenHeader
+#  secret: lyltokenAuth
+#
+#redis:
+#  constant:
+#    charLength: 6
+#    charString: 123456789
+#    imageCode: imageCode
+#    imageCodeExpire: 15
+#    smsCode: smsCode
+#    smsCodeExpire: 15
+#
+##kaptcha的自定义配置
+#kaptcha:
+#  charLength: 4;
+#  charString: 0123456789;
+#  height: 50;
+#  width: 150;
+#
+#login:
+#  parameter:
+#    loginProcessingUrl: /login
+#    mobileCode: mobileCode
+#    mobileNum: mobileNum
+#    passwordParameter: password
+#    smsLoginProcessingUrl: /smsLogin
+#    usernameParameter: userName
+
+pictures:
+  path: I:\temporaryFiles\web\
+  defaultPicture: I:\temporaryFiles\Picture\start.png

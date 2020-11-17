@@ -1,9 +1,9 @@
 package com.lyl.controller;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.lyl.common.ResultType;
 import com.lyl.enums.CommonEnum;
 import com.lyl.service.AlipayService;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/alipay")
 public class AlipayController {
 
-    @Reference
+    @DubboReference
     private AlipayService alipayService;
 
     @GetMapping("/time")
