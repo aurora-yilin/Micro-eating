@@ -33,43 +33,55 @@ import java.util.Map;
 public class AlipayServiceImpl implements AlipayService{
 
     @Resource
-    AlipayClient alipayClient;
+    private AlipayClient alipayClient;
 
     @Resource
-    AlipayConstant alipayConstant;
+    private AlipayConstant alipayConstant;
 
+    @Resource
+    private OrderService orderService;
+
+    /**
+     * 创建订单
+     * @param orderNo 订单编号
+     * @param amount 实际支付金额
+     * @param body 订单描述
+     * @return
+     * @throws AlipayApiException
+     * @throws UnsupportedEncodingException
+     */
     @Override
     public String createOrder(String orderNo, double amount, String body) throws AlipayApiException, UnsupportedEncodingException {
 
-//        AlipayTradeAppPayRequest ali_request = new AlipayTradeAppPayRequest();
-//        ali_request.setNotifyUrl(alipayConstant.getNotifyUrl());// 设置异步回调地址
-//        ali_request.setReturnUrl(alipayConstant.getReturnUrl());// 设置同步回调地址
-//        if(null!=String.valueOf(amount)){
-//            AlipayTradeAppPayModel alipayTradeAppPayModel = new AlipayTradeAppPayModel();
-//            //订单号
-//            alipayTradeAppPayModel.setOutTradeNo(orderNo);
-//            //订单金额
-//            alipayTradeAppPayModel.setTotalAmount(String.valueOf(amount));
-//            //商品名称
-//            alipayTradeAppPayModel.setSubject("【微膳食】");
-//            //商品信息
-//            alipayTradeAppPayModel.setBody(body);
-//            //设置订单超时时间
-//            alipayTradeAppPayModel.setTimeoutExpress("1c");
-//            //设置产品代码
-//            alipayTradeAppPayModel.setProductCode("FAST_INSTANT_TRADE_PAY");
-//            //公用回传参数，如果请求时传递了该参数，则返回给商户时会回传该参数
-//            String passback_params	 = "{ab=测试一下;tdst=公共参数;ccsd=gds；dfa=23·12}";
-//            String passback_params2 = URLEncoder.encode(passback_params,"UTF-8");
-//            alipayTradeAppPayModel.setPassbackParams(passback_params2);
-//
-//            ali_request.setBizModel(alipayTradeAppPayModel);
-////        AlipayTradeAppPayResponse ali_response = alipayClient.sdkExecute(ali_request);
-//            String result = alipayClient.pageExecute(ali_request).getBody();
-//            //就是orderString 可以直接给客户端请求，无需再做处理。
-//            return result;
-//        }
-//        return "error/error_5xx";
+        /**AlipayTradeAppPayRequest ali_request = new AlipayTradeAppPayRequest();
+        ali_request.setNotifyUrl(alipayConstant.getNotifyUrl());// 设置异步回调地址
+        ali_request.setReturnUrl(alipayConstant.getReturnUrl());// 设置同步回调地址
+        if(null!=String.valueOf(amount)){
+            AlipayTradeAppPayModel alipayTradeAppPayModel = new AlipayTradeAppPayModel();
+            //订单号
+            alipayTradeAppPayModel.setOutTradeNo(orderNo);
+            //订单金额
+            alipayTradeAppPayModel.setTotalAmount(String.valueOf(amount));
+            //商品名称
+            alipayTradeAppPayModel.setSubject("【微膳食】");
+            //商品信息
+            alipayTradeAppPayModel.setBody(body);
+            //设置订单超时时间
+            alipayTradeAppPayModel.setTimeoutExpress("1c");
+            //设置产品代码
+            alipayTradeAppPayModel.setProductCode("FAST_INSTANT_TRADE_PAY");
+            //公用回传参数，如果请求时传递了该参数，则返回给商户时会回传该参数
+            String passback_params	 = "{ab=测试一下;tdst=公共参数;ccsd=gds；dfa=23·12}";
+            String passback_params2 = URLEncoder.encode(passback_params,"UTF-8");
+            alipayTradeAppPayModel.setPassbackParams(passback_params2);
+
+            ali_request.setBizModel(alipayTradeAppPayModel);
+//        AlipayTradeAppPayResponse ali_response = alipayClient.sdkExecute(ali_request);
+            String result = alipayClient.pageExecute(ali_request).getBody();
+            //就是orderString 可以直接给客户端请求，无需再做处理。
+            return result;
+        }
+        return "error/error_5xx";*/
 
 
         //设置请求参数
@@ -177,6 +189,7 @@ public class AlipayServiceImpl implements AlipayService{
                     && StringUtils.isBlank(subMsg)){
                 // 表示退款申请接受成功，结果通过退款查询接口查询
                 // 修改用户订单状态为退款
+                orderService.updateOrderByOrderId(3, orderNo);
                 return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(),"订单退款成功",null);
             }
             return ResultType.SERVERERROR(CommonEnum.SERVERERROR.getCode(),subCode + ":" + subMsg,null);

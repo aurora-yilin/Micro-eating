@@ -1,13 +1,17 @@
 package com.lyl.controller;
 
+import com.alibaba.druid.util.StringUtils;
 import com.lyl.common.ResultType;
+import com.lyl.entity.Order;
 import com.lyl.enums.CommonEnum;
 import com.lyl.service.AlipayService;
+import com.lyl.service.OrderService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.UUID;
 
 /**
  * AlipayController
@@ -23,6 +27,9 @@ public class AlipayController {
     @DubboReference
     private AlipayService alipayService;
 
+    @DubboReference
+    private OrderService orderService;
+
     @GetMapping("/time")
     public String time(){
         return "43u4123492083490832time"+alipayService.test();
@@ -36,20 +43,50 @@ public class AlipayController {
      * @return
      */
     @GetMapping("/createOrder")
-    public void createOrder(@RequestParam("orderNo") String orderNo,
+    public void createOrder(@RequestParam(value = "orderNo",required = false) String orderNo,
                                   @RequestParam("amount") double amount,
                                   @RequestParam("body") String body,
+                                  @RequestParam(value = "userName",required = false) String userName,
                                   HttpServletResponse httpServletResponse){
         try{
             //1.验证订单是否存在
+            if (!StringUtils.isEmpty(orderNo)) {
+                Order order = orderService.selectOrderByOrderId(orderNo);
+                if (order == null) {
+                    //创建一个Order对象用来存储
+                    Order orderInfo = new Order();
+                    orderInfo.setOrderId(UUID.randomUUID().toString().replace("-",""));
+                    orderInfo.setUserName(userName);
+                    orderInfo.setOrderBody(body);
+                    orderInfo.setOrderStatu(2);//设置订单为未支付状态
+                    orderInfo.setOrderPayMode(1);
 
-            //2.创建支付宝订单
-            String form = alipayService.createOrder(orderNo, amount, body);
-//            return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(),CommonEnum.SUCCESS.getMsg(),order);
-            httpServletResponse.setContentType("text/html;charset=utf-8" );
-            httpServletResponse.getWriter().write(form);//直接将完整的表单html输出到页面
-            httpServletResponse.getWriter().flush();
-            httpServletResponse.getWriter().close();
+                    //2.创建支付宝订单
+                    Integer integer = orderService.saveOrder(orderInfo);
+
+                    String form = alipayService.createOrder(orderInfo.getOrderId(), amount, body);
+                    httpServletResponse.setContentType("text/html;charset=utf-8" );
+                    httpServletResponse.getWriter().write(form);//直接将完整的表单html输出到页面
+                    httpServletResponse.getWriter().flush();
+                    httpServletResponse.getWriter().close();
+                }
+            }else{
+                Order orderInfo = new Order();
+                orderInfo.setOrderId(UUID.randomUUID().toString().replace("-",""));
+                orderInfo.setUserName(userName);
+                orderInfo.setOrderBody(body);
+                orderInfo.setOrderStatu(2);//设置订单为未支付状态
+                orderInfo.setOrderPayMode(1);
+
+                //2.创建支付宝订单
+                Integer integer = orderService.saveOrder(orderInfo);
+
+                String form = alipayService.createOrder(orderInfo.getOrderId(), amount, body);
+                httpServletResponse.setContentType("text/html;charset=utf-8" );
+                httpServletResponse.getWriter().write(form);//直接将完整的表单html输出到页面
+                httpServletResponse.getWriter().flush();
+                httpServletResponse.getWriter().close();
+            }
         }catch (Exception e){
 //            return ResultType.SERVERERROR(CommonEnum.SERVERERROR.getCode(),"订单生成失败",null);
         }
@@ -74,6 +111,13 @@ public class AlipayController {
         return ResultType.SERVERERROR(CommonEnum.SERVERERROR.getCode(),CommonEnum.ERROR.getMsg(),null);
     }
 
+    /**
+     * 申请退款
+     * @param orderNo
+     * @param amount
+     * @param refundReason
+     * @return
+     */
     @PostMapping("/refund")
     public ResultType refund(@RequestParam String orderNo,
                              @RequestParam double amount,
