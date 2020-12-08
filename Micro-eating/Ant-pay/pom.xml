@@ -20,7 +20,7 @@
     <properties>
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <alipay-sdk-java.version>3.7.110.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.10.0.ALL</alipay-sdk-java.version>
     </properties>
 
     <dependencyManagement>

@@ -4,6 +4,7 @@ import com.alipay.api.AlipayApiException;
 import com.lyl.common.ResultType;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 
 /**
  * AlipayService
@@ -22,7 +23,7 @@ public interface AlipayService {
      * @return
      * @throws AlipayApiException
      */
-    String createOrder(String orderNo, double amount, String body) throws AlipayApiException;
+    String createOrder(String orderNo, double amount, String body) throws AlipayApiException, UnsupportedEncodingException;
 
     /**
      *

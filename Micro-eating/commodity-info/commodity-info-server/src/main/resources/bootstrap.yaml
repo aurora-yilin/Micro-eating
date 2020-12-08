@@ -78,7 +78,7 @@ spring:
 #        login-password: admin
     password: Natural;follow
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://47.97.220.234:3306/Micro-eating
+    url: jdbc:mysql://192.168.111.101:3306/Micro-eating
     username: root
   redis:
     host: 47.97.220.234

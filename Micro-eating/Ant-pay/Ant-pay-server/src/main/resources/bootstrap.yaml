@@ -78,7 +78,7 @@ spring:
 #        login-password: admin
     password: Natural;follow
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://47.97.220.234:3306/Micro-eating
+    url: jdbc:mysql://192.168.111.101:3306/Micro-eating
     username: root
   redis:
     host: 47.97.220.234
@@ -141,23 +141,25 @@ pay:
   alipay:
     #商户应用id
     appId: 2016110100783029
-    #支付宝网关接口
+    #支付宝网关接口https://openapi.alipay.com/gateway.do
     gatewayUrl: https://openapi.alipaydev.com/gateway.do
     #私钥
-    appPrivateKey: MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCDhKXXHvgSjJNTWTL5R3MVagAG00lqRwhPh6vHGKs7nq+UfG7JivlUhrq5MMJ3Mm0lz3JFjamQ6wCB8LeNmLRxKOVSuYZizVk5F4Dim+RPe8WC+Bq4zYhsyGeN0RncUFLEgY7tK3KTqm8kSBwUaaRHoZJlFcCUyTu+EuVH5dGu/jgZf2OxLpXWugK4K9eVBLeMOnrFGf4sg9C7D7s6ZsIxF/LtZhz8budLH7G/7/+o+iFmYRDzE2z4Y/Vx26DKHA7wG95tfv+gZtaqlFwjRxYVn8N7YjKmpAjDX3uCGDIl9Q6NmNwmq291AHzRC3T4Lr7orIvlRrUXZ9tVxvVfhVTpAgMBAAECggEAYykvdTwXZLzzE8PMaCFUBxBOBtdloij+fiBYBxx1dtVVowoS6gjLpsySmrDF3uN5YinACeser3JQhqh9bNh3LF7eUPoq9fHIVQCAn9tUUA2NRQtV8oKdWw/a7BV9fxxc22an4fCBSg8WD3ADI+zm/U84Ntkow8XaMpzCnOwNpfdWRn1bnpiXLm+WrEHd/E83CbPsmW4armCTUYS0Cq+R7beaatVwWzlPdQSPGc+aMEUi3io8bzxBHhLjI9H1u92xMN9NJjuWIEXWvo1bp9ZzNRw5wZDbGAJzB9T6U/uzPBxGy8hVGMaat+gE5SCx0/mZ9fXKn13Ia+ot59zm7pXppQKBgQDQ2BbPNEzGKAuSFp+5MHGQPckRWm235r7SXt3x4GZxVq4AXwtVNK/xrLPHiLS+IHbiu3BhrJSygn7xKQjjvvRFdFDp8+od4oUtacu6wTWCdgorQS9aJftBa5blngWzPtALvVlfyu7psKjoNwbjaLbXQIy/R5zfyfnZh2BzFOSp7wKBgQChNtoWC35V3uaIPFT9AwzK0vAE6CoUcN4Qryj56iI8lukAVGHHWMjohR+dxqYHDtbgy3r6e6GT8yQWQ3CXDwX2DnLwGChWJn4rJQY6tA38ca4Vx82JVx3cIdCaxtDlHxxALhUXe2M6ffzmzMAmn/Dwi0tSAskpqdJHEtm3Se8mpwKBgFjkUTkawr7pVpt048FYXE4P7mBjhCXtojU6ye9lG1WMln1z9wfqaCVO5Cq/BmeSu+ef7qK0aYpdvxh45d7CbYiOjM430uOrghIlYOD50gPYqFVm5nfRiNN8rvrHOxfjWXxVuQ/r+asgVZSZr2XmMUUHpaDZI22hs6YiWCxDrVyjAoGAFR0A7NgugIKDwJ3eJ5CpsTp08r+RG0I44wh9nlVajILbGw7yC1CGZ2Vf4aLthYkc/S3I+lsMqzqxpDTK3w25oyL7TJRtW/MInQ/pQ/Dm0AP3X6TeNzlwkK7hChQ1sXwkkAc4/e1L7pInd/aix6w0utwTTjdNLyatgl9mogmNx4sCgYB3hNyAdX0O675sAFFmozWFRpRoTCbBvZFSX/J49eUnkLCsIBdOXmIZUds3mLu7jUEpbDIbvuBK1j/+FiBTiV5c8Ph0I19Q/g7K0bq4ogmeSfxb73Ya69dZLoYMePG4Zi8zKVjRCEJbJ7zrRkkosHp2449Rjbw5b/GTaWb/Bz+A5A==
+    appPrivateKey: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCBhFiY9vcd93lWm5yJ+6sA+j8d7dtmAfmeyuz97e0jzDLv2DCrXCFgLEvwHYGN52TfjPhUQL5AZOQqrrMCsEke5J6FL9HYfu9SnvBFgPoKpRLgzfFL0F90Kf4sFgAjf1iAo+zYIcVyB3l1GzNNXAxyW10qvJgIJ0/Qo8HI4MrSffIg/g8zCqpij/79IZlI5zab+kWgR6ol8X7BOA4Tf1aI7imTjVwMvaM85CkdZN0uOaAEB8vw0t9xlC43lNmQeauJOOCDHagvTP1T9b61nNFCALjyC3MJvyC4meltSjUq+Rr7Mrwxp/Zt4T0wKYOizyYzvlWg1QJ0UXZCNO2nokn5AgMBAAECggEAOdAf1Df5WvEKwrQ3jgg+7vLFldCE7OXYzR775uV7w0z1N8ajAvrfExTy2L3zBKrThk5g0wsLYacnij3tPjf+i8G1WPJdk2wl3BWCXyQReQrygFKtcRAUa8AK6xbu/OltUg7aPCfnAN2BQ9rebZu3GpzZ26fPnWQe5p0SdV6Sap6WR5+wbciC82w3TVlVWwfmkjKTUVNaxMzC86bITk+WNOm2UTV6OQCa1x7k/AesBPJmQvyvhc5B6SUV6zsxINaeDHZmvA/0cFOMf7lyDPDUl8MM++XAqLRyaILHuCTXwMqDzRXl4pSn5OdbsVLh5fhVNXfUTDjxipOthx5MvxOrYQKBgQDJExU7x3Jyl6xeBlsBsChtNdo+DOpAKi3coo+dpruZWC0+1DFhnqAGhZYQVssI3rxPy7/vOqeEIAka8OlzUHrvlmOmGk5SlWUw2/lWKy/Mkhei4X4ekHwL/pru58dGssWnswWE7RviRUgn3HK0uLokbfM9uUNV1W7EGWPGx57JNQKBgQCk5VKoxdf0D5LnXD7/usr9L6Y0CAJQ3e13BsmoeUwBDvDPEaepTgKOPo/ZtVsVrLNrKR2kphZJdE+PQbB0TcD2V8ei38OfCWADC8E8iaFsSwhj+YfY1h4JiNKk8l5EF4km30pdkz+XZDvCEIluxON3XpfZlHWRfzbGKDkzo65aNQKBgHZl9DTVBkEPqoFbAK+HyOY1taKf/Dd4HrUyS5qrGP/8effq/oDa5KOyeWB5muhIL15VPVlikk0sh/ADN5OdKiZ1yYt/Jete6MzSWokwuN6ej6hrWtYogcKWUyil9iNdFSHgOjnBXI/p98jw9+IOfB0DWR1ZP5sFKEn0IVplJMyZAoGAb4hNKKrpLsN58dOLKR4HPsmD+Z2RM3FotSF6NOIWboDUkLq4VOPXBq96TR9FxJtToB/nVP6iBH0Pcy5TU9djtTwaZChGAMQulODWi0PsU3tM6ZJWOGxbVMee8sKc0CG7Ove9LR3z3UqGwPS+gJXb5VmuDBVGkGsjeVSrnCoSPCECgYEAv1Ia/RJ4gwYWwe4T3TdXEnTnOWiGeuz94W4d3NEck1OY1XmLYGdKvnEGd1Q40Qf7noFHvVHRNqMfcXrDUhMvv9eaMpRlP5FzLbL3/9oRws2N+OEFcoMrWHgRa/8aY2u/3myMmzef9j8INVmoOiNCN9TA4W7eoaO2t2GWLR1iQ8k=
     #公钥
     alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoBBkyjeLTLelnvGP1sM+YMTCLSGtW6Wv0Iy+uS9+75QfjF/ccszOm3zLgzqgRMxUZcBJogoDaz+W0JlImhzJm6Pkpr9JEOB7mCauNJawD6Jr1vealxYGR054/3U9thTwvkUyEBFBpMg/bfoT2o9wc2r0CfZy5aala9CD9J+M4tfeq4/NdE/KllWUnISRxMQ+IhBrO9VdqXp/izlkGbfz63TTYmjko3B0N1AUTIWNnv86cyd4rdbg6zNeOEg/wEaR3LT7X2rW+W+af6neycXDgLlE7/+4yWvgAeiMFRx6XwHAve8JiAd5F70JcfsiCx9ysoT3lxXppMY3/lztS6NifQIDAQAB
     #服务器异步通知页面路径 ，设置为自己网站地址，由于只是本地调试 localhost就可以
-    notifyUrl: http://localhost:8889/alipay/notify
+    notifyUrl: http://www.baidu.com
     #页面跳转同步通知页面路径
-    returnUrl:
+    returnUrl: http://www.baidu.com
     #编码类型
     charset: UTF-8
     #数据类型
-    format: json
+    format: JSON
     #签名类型
     signtype: RSA2
     #订单超时时间
-    timeoutExpress: 30m
+    timeoutExpress: 1c
     #产品类型
-    productCode: QUICK_MSECURITY_PAY
+    productCode: FAST_INSTANT_TRADE_PAY
+    #产品subject
+    subject: 【微膳食】

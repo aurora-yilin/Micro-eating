@@ -13,13 +13,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.alipay.sdk</groupId>
-            <artifactId>alipay-sdk-java</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.lyl</groupId>
             <artifactId>common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
         </dependency>
     </dependencies>
 

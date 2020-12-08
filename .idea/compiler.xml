@@ -2,18 +2,41 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Annotation profile for micro-eating" enabled="true">
-        <sourceOutputDir name="../target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../target/generated-test-sources/test-annotations" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="common" />
+        <module name="application-consumer" />
         <module name="token-auth" />
+        <module name="common" />
+        <module name="Ant-pay-api" />
+        <module name="Ant-pay-server" />
+        <module name="commodity-info-server" />
+        <module name="commodity-info-api" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="common" target="1.5" />
-      <module name="micro-eating" target="1.5" />
-      <module name="token-auth" target="1.5" />
+      <module name="Ant-pay" target="11" />
+      <module name="Ant-pay-api" target="11" />
+      <module name="Ant-pay-server" target="11" />
+      <module name="application-consumer" target="11" />
+      <module name="commodity-info" target="11" />
+      <module name="commodity-info-api" target="11" />
+      <module name="commodity-info-server" target="11" />
+      <module name="common" target="11" />
+      <module name="micro-eating" target="11" />
+      <module name="token-auth" target="11" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Ant-pay-api" options="-parameters" />
+      <module name="Ant-pay-server" options="-parameters" />
+      <module name="application-consumer" options="-parameters" />
+      <module name="commodity-info-api" options="-parameters" />
+      <module name="commodity-info-server" options="-parameters" />
+      <module name="common" options="-parameters" />
+      <module name="token-auth" options="-parameters" />
+    </option>
   </component>
 </project>

@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Micro-eating/Ant-pay/Ant-pay.iml" filepath="$PROJECT_DIR$/Micro-eating/Ant-pay/Ant-pay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Micro-eating/Ant-pay/Ant-pay-api/Ant-pay-api.iml" filepath="$PROJECT_DIR$/Micro-eating/Ant-pay/Ant-pay-api/Ant-pay-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Micro-eating/Ant-pay/Ant-pay-server/Ant-pay-server.iml" filepath="$PROJECT_DIR$/Micro-eating/Ant-pay/Ant-pay-server/Ant-pay-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Micro-eating-a.iml" filepath="$PROJECT_DIR$/.idea/Micro-eating-a.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Micro-eating/application-consumer/application-consumer.iml" filepath="$PROJECT_DIR$/Micro-eating/application-consumer/application-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Micro-eating/commodity-info/commodity-info.iml" filepath="$PROJECT_DIR$/Micro-eating/commodity-info/commodity-info.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Micro-eating/commodity-info/commodity-info-api/commodity-info-api.iml" filepath="$PROJECT_DIR$/Micro-eating/commodity-info/commodity-info-api/commodity-info-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Micro-eating/commodity-info/commodity-info-server/commodity-info-server.iml" filepath="$PROJECT_DIR$/Micro-eating/commodity-info/commodity-info-server/commodity-info-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/Micro-eating/common/common.iml" filepath="$PROJECT_DIR$/Micro-eating/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/Micro-eating/micro-eating.iml" filepath="$PROJECT_DIR$/Micro-eating/micro-eating.iml" />
       <module fileurl="file://$PROJECT_DIR$/Micro-eating/token-auth/token-auth.iml" filepath="$PROJECT_DIR$/Micro-eating/token-auth/token-auth.iml" />

@@ -36,7 +36,7 @@ public class AlipayController {
      * @return
      */
     @GetMapping("/createOrder")
-    public ResultType createOrder(@RequestParam("orderNo") String orderNo,
+    public void createOrder(@RequestParam("orderNo") String orderNo,
                                   @RequestParam("amount") double amount,
                                   @RequestParam("body") String body,
                                   HttpServletResponse httpServletResponse){
@@ -44,14 +44,14 @@ public class AlipayController {
             //1.验证订单是否存在
 
             //2.创建支付宝订单
-            String order = alipayService.createOrder(orderNo, amount, body);
-            return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(),CommonEnum.SUCCESS.getMsg(),order);
-//            httpServletResponse.setContentType("text/html;charset=utf-8" );
-//            httpServletResponse.getWriter().write(form);//直接将完整的表单html输出到页面
-//            httpServletResponse.getWriter().flush();
-//            httpServletResponse.getWriter().close();
+            String form = alipayService.createOrder(orderNo, amount, body);
+//            return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(),CommonEnum.SUCCESS.getMsg(),order);
+            httpServletResponse.setContentType("text/html;charset=utf-8" );
+            httpServletResponse.getWriter().write(form);//直接将完整的表单html输出到页面
+            httpServletResponse.getWriter().flush();
+            httpServletResponse.getWriter().close();
         }catch (Exception e){
-            return ResultType.SERVERERROR(CommonEnum.SERVERERROR.getCode(),"订单生成失败",null);
+//            return ResultType.SERVERERROR(CommonEnum.SERVERERROR.getCode(),"订单生成失败",null);
         }
     }
 

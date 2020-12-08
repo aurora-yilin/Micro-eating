@@ -2,12 +2,10 @@ package com.lyl.service;
 
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
-import com.alipay.api.domain.AlipayTradeAppPayModel;
 import com.alipay.api.domain.AlipayTradeRefundModel;
 import com.alipay.api.internal.util.AlipaySignature;
-import com.alipay.api.request.AlipayTradeAppPayRequest;
+import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.alipay.api.request.AlipayTradeRefundRequest;
-import com.alipay.api.response.AlipayTradeAppPayResponse;
 import com.alipay.api.response.AlipayTradeRefundResponse;
 import com.lyl.common.ResultType;
 import com.lyl.enums.CommonEnum;
@@ -18,6 +16,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -40,31 +39,67 @@ public class AlipayServiceImpl implements AlipayService{
     AlipayConstant alipayConstant;
 
     @Override
-    public String createOrder(String orderNo, double amount, String body) throws AlipayApiException {
-        AlipayTradeAppPayModel alipayTradeAppPayModel = new AlipayTradeAppPayModel();
-        //商品名称
-        alipayTradeAppPayModel.setSubject(body);
-        //商品信息
-        alipayTradeAppPayModel.setBody(body);
-        //订单号
-        alipayTradeAppPayModel.setOutTradeNo(orderNo);
-        //设置订单超时时间
-        alipayTradeAppPayModel.setTimeoutExpress("30m");
-        //订单金额
-        alipayTradeAppPayModel.setTotalAmount(String.valueOf(amount));
+    public String createOrder(String orderNo, double amount, String body) throws AlipayApiException, UnsupportedEncodingException {
 
-        //设置产品代码
-        alipayTradeAppPayModel.setProductCode("QUICK_MSECURITY_PAY");
-        //公用回传参数，如果请求时传递了该参数，则返回给商户时会回传该参数
-        alipayTradeAppPayModel.setPassbackParams(orderNo);
+//        AlipayTradeAppPayRequest ali_request = new AlipayTradeAppPayRequest();
+//        ali_request.setNotifyUrl(alipayConstant.getNotifyUrl());// 设置异步回调地址
+//        ali_request.setReturnUrl(alipayConstant.getReturnUrl());// 设置同步回调地址
+//        if(null!=String.valueOf(amount)){
+//            AlipayTradeAppPayModel alipayTradeAppPayModel = new AlipayTradeAppPayModel();
+//            //订单号
+//            alipayTradeAppPayModel.setOutTradeNo(orderNo);
+//            //订单金额
+//            alipayTradeAppPayModel.setTotalAmount(String.valueOf(amount));
+//            //商品名称
+//            alipayTradeAppPayModel.setSubject("【微膳食】");
+//            //商品信息
+//            alipayTradeAppPayModel.setBody(body);
+//            //设置订单超时时间
+//            alipayTradeAppPayModel.setTimeoutExpress("1c");
+//            //设置产品代码
+//            alipayTradeAppPayModel.setProductCode("FAST_INSTANT_TRADE_PAY");
+//            //公用回传参数，如果请求时传递了该参数，则返回给商户时会回传该参数
+//            String passback_params	 = "{ab=测试一下;tdst=公共参数;ccsd=gds；dfa=23·12}";
+//            String passback_params2 = URLEncoder.encode(passback_params,"UTF-8");
+//            alipayTradeAppPayModel.setPassbackParams(passback_params2);
+//
+//            ali_request.setBizModel(alipayTradeAppPayModel);
+////        AlipayTradeAppPayResponse ali_response = alipayClient.sdkExecute(ali_request);
+//            String result = alipayClient.pageExecute(ali_request).getBody();
+//            //就是orderString 可以直接给客户端请求，无需再做处理。
+//            return result;
+//        }
+//        return "error/error_5xx";
 
-        AlipayTradeAppPayRequest ali_request = new AlipayTradeAppPayRequest();
-        ali_request.setBizModel(alipayTradeAppPayModel);
-        ali_request.setNotifyUrl(alipayConstant.getNotifyUrl());// 回调地址
-        AlipayTradeAppPayResponse ali_response = alipayClient.sdkExecute(ali_request);
-//        AlipayTradeAppPayResponse alipayTradeAppPayResponse = alipayClient.pageExecute(ali_request);
-        //就是orderString 可以直接给客户端请求，无需再做处理。
-        return ali_response.getBody();
+
+        //设置请求参数
+        AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
+        alipayRequest.setReturnUrl(alipayConstant.getReturnUrl());//同步
+        alipayRequest.setNotifyUrl(alipayConstant.getNotifyUrl());//异步
+
+        String out_trade_no = orderNo; //订单号
+        String total_amount = String.valueOf(amount);//付款金额，必填
+        String subject = "【微膳食】";  //订单名称，必填
+        String subjectTest = alipayConstant.getSubject();
+        String bodys = body;//商品描述，可空
+        // 该笔订单允许的最晚付款时间，逾期将关闭交易。取值范围：1m～15d。m-分钟，h-小时，d-天，1c-当天（1c-当天的情况下，无论交易何时创建，都在0点关闭）。 该参数数值不接受小数点， 如 1.5h，可转换为 90m。
+        String timeout_express = "1c";
+        String productCode = "FAST_INSTANT_TRADE_PAY";
+        String productCodeTest = alipayConstant.getProductCode();
+
+        if(null!=total_amount) { //支付金额不等于空
+            alipayRequest.setBizContent("{\"out_trade_no\":\""+ out_trade_no +"\","
+                    + "\"total_amount\":\""+ total_amount +"\","
+                    + "\"subject\":\""+ subjectTest +"\","
+                    + "\"body\":\""+ bodys +"\","
+                    + "\"timeout_express\":\""+ timeout_express +"\","
+//                    + "\"passback_params2\":\"{ab=测试一下;tdst=公共参数;ccsd=gds；dfa=23·12}\","
+                    + "\"product_code\":\""+ productCodeTest +"\"}");
+            //请求
+            String result = alipayClient.pageExecute(alipayRequest).getBody();
+            return result;
+        }
+        return "error/error_5xx";
     }
 
     @Override
@@ -96,7 +131,7 @@ public class AlipayServiceImpl implements AlipayService{
                 params.put(name, valueStr);
             }
 
-            boolean verifyResult = AlipaySignature.rsaCheckV1(params,
+            boolean verifyResult = AlipaySignature.rsaCheckV2(params,
                     alipayConstant.getAlipayPublicKey(),
                     alipayConstant.getCharset(),
                     alipayConstant.getSigntype());
