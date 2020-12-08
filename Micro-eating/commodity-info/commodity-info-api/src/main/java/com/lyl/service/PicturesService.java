@@ -11,4 +11,6 @@ import java.io.File;
  **/
 public interface PicturesService {
     File getPicture(String pictureName);
+
+    File uploadPicture();
 }

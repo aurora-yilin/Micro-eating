@@ -30,4 +30,9 @@ public class PicturesServiceImpl implements PicturesService{
             return new File(pictureConstant.getDefaultPicture());
         }
     }
+
+    @Override
+    public File uploadPicture() {
+        return new File(pictureConstant.getPath());
+    }
 }
