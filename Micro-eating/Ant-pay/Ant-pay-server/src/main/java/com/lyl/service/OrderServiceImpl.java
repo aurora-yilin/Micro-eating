@@ -45,5 +45,8 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.selectOrderByUserName(userName);
     }
 
-
+    @Override
+    public Integer deleteOrderByOrderId(String orderId) {
+        return orderMapper.deleteOrderByOrderId(orderId);
+    }
 }

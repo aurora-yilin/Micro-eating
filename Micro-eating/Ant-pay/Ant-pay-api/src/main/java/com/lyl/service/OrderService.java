@@ -19,4 +19,6 @@ public interface OrderService {
     Integer updateOrderByOrderId(Integer status,String orderId);
 
     List<Order> selectOrderByUserName(String userName);
+
+    Integer deleteOrderByOrderId(String orderId);
 }

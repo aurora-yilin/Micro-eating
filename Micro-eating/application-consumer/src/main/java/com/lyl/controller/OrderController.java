@@ -31,4 +31,10 @@ public class OrderController {
         List<Order> orders = orderService.selectOrderByUserName(userName);
         return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(),CommonEnum.SUCCESS.getMsg(),orders);
     }
+
+    @PostMapping("/deleteOrder")
+    public ResultType deleteOrderByOrderId(@RequestParam("orderId")String orderId){
+        Integer integer = orderService.deleteOrderByOrderId(orderId);
+        return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(),CommonEnum.SUCCESS.getMsg(),integer);
+    }
 }
