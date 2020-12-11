@@ -30,6 +30,7 @@ import java.util.UUID;
 @Slf4j
 public class PictureController {
 
+    
     @DubboReference
     private PicturesService picturesService;
 

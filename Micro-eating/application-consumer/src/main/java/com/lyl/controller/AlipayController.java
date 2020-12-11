@@ -1,6 +1,7 @@
 package com.lyl.controller;
 
 import com.alibaba.druid.util.StringUtils;
+import com.alipay.api.AlipayApiException;
 import com.lyl.common.ResultType;
 import com.lyl.entity.Order;
 import com.lyl.enums.CommonEnum;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.UUID;
 
 /**
@@ -53,43 +55,37 @@ public class AlipayController {
             if (!StringUtils.isEmpty(orderNo)) {
                 Order order = orderService.selectOrderByOrderId(orderNo);
                 if (order == null) {
-                    //创建一个Order对象用来存储
-                    Order orderInfo = new Order();
-                    orderInfo.setOrderId(UUID.randomUUID().toString().replace("-",""));
-                    orderInfo.setUserName(userName);
-                    orderInfo.setOrderBody(body);
-                    orderInfo.setOrderStatu(2);//设置订单为未支付状态
-                    orderInfo.setOrderPayMode(1);
-
-                    //2.创建支付宝订单
-                    Integer integer = orderService.saveOrder(orderInfo);
-
-                    String form = alipayService.createOrder(orderInfo.getOrderId(), amount, body);
-                    httpServletResponse.setContentType("text/html;charset=utf-8" );
-                    httpServletResponse.getWriter().write(form);//直接将完整的表单html输出到页面
-                    httpServletResponse.getWriter().flush();
-                    httpServletResponse.getWriter().close();
+                    createOrderRealization(userName,body,amount,httpServletResponse);
+                }
+                else{
+                    ResultType.SUCCESS("订单已存在",null,httpServletResponse);
                 }
             }else{
-                Order orderInfo = new Order();
-                orderInfo.setOrderId(UUID.randomUUID().toString().replace("-",""));
-                orderInfo.setUserName(userName);
-                orderInfo.setOrderBody(body);
-                orderInfo.setOrderStatu(2);//设置订单为未支付状态
-                orderInfo.setOrderPayMode(1);
-
-                //2.创建支付宝订单
-                Integer integer = orderService.saveOrder(orderInfo);
-
-                String form = alipayService.createOrder(orderInfo.getOrderId(), amount, body);
-                httpServletResponse.setContentType("text/html;charset=utf-8" );
-                httpServletResponse.getWriter().write(form);//直接将完整的表单html输出到页面
-                httpServletResponse.getWriter().flush();
-                httpServletResponse.getWriter().close();
+                createOrderRealization(userName,body,amount,httpServletResponse);
             }
         }catch (Exception e){
 //            return ResultType.SERVERERROR(CommonEnum.SERVERERROR.getCode(),"订单生成失败",null);
         }
+    }
+
+    private void createOrderRealization(String userName,String body,double amount,HttpServletResponse httpServletResponse) throws IOException, AlipayApiException {
+        Order orderInfo = new Order();
+        orderInfo.setOrderId(UUID.randomUUID().toString().replace("-",""));
+        orderInfo.setUserName(userName);
+        orderInfo.setOrderBody(body);
+        /*设置订单为未支付状态*/
+        orderInfo.setOrderStatu(2);
+        orderInfo.setOrderPayMode(1);
+
+        /* 2.创建支付宝订单 */
+        Integer integer = orderService.saveOrder(orderInfo);
+
+        String form = alipayService.createOrder(orderInfo.getOrderId(), amount, body);
+        httpServletResponse.setContentType("text/html;charset=utf-8" );
+        /*直接将完整的表单html输出到页面*/
+        httpServletResponse.getWriter().write(form);
+        httpServletResponse.getWriter().flush();
+        httpServletResponse.getWriter().close();
     }
 
     @RequestMapping("/notify")

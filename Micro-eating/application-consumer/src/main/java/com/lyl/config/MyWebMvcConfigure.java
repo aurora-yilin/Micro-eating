@@ -18,7 +18,7 @@ import javax.servlet.MultipartConfigElement;
 public class MyWebMvcConfigure implements WebMvcConfigurer {
 
     /**
-     * 设置springboot的上传文件的大小限制
+     * 设置springboot的上传文件的大小限制(不生效，看yaml配置文件生效)
      * @return
      */
     @Bean
