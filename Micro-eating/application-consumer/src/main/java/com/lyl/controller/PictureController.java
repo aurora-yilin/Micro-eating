@@ -4,8 +4,9 @@ import com.lyl.common.ResultType;
 import com.lyl.enums.CommonEnum;
 import com.lyl.exception.MyIOException;
 import com.lyl.service.PicturesService;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,9 +28,10 @@ import java.util.UUID;
  **/
 @RestController
 @RequestMapping("/picture")
-@Slf4j
 public class PictureController {
 
+    /** logger */
+    private static final Logger LOGGER = LoggerFactory.getLogger(PictureController.class);
     
     @DubboReference
     private PicturesService picturesService;
@@ -45,9 +47,10 @@ public class PictureController {
             outputStream = response.getOutputStream();
             if (bufferedImage != null) {
                 ImageIO.write(bufferedImage, "png", outputStream);
+                LOGGER.info("获取图片{}",pictureName);
             }
         } catch (IOException e) {
-            log.error("获取图片异常{}",e.getMessage());
+            LOGGER.error("获取图片异常{}",e.getMessage());
             throw new MyIOException(CommonEnum.SERVERERROR.getCode(),"IO Exception");
         } finally {
             if (outputStream != null) {
@@ -89,7 +92,7 @@ public class PictureController {
 //                        .replace("-", "") + "." + prefix;
 //                image = new File(filelocations,randomFilename);
 //            }
-            log.info("image path:"+image);
+            LOGGER.info("image path:"+image);
             try{
                 multipartFile.transferTo(image);
             }catch (IOException e) {
