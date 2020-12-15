@@ -30,4 +30,9 @@ public class CommodityServiceImpl implements CommodityService{
     public List<Evaluation> selectEvaluationByCommodityId(Integer commodityId) {
         return commodityMapper.selectEvaluationByCommodityId(commodityId);
     }
+
+    @Override
+    public List<Commodity> selectCommodityInfoAll() {
+        return commodityMapper.selectCommodityInfoAll();
+    }
 }

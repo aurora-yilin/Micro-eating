@@ -99,14 +99,15 @@ public class AlipayServiceImpl implements AlipayService{
         String productCode = "FAST_INSTANT_TRADE_PAY";
         String productCodeTest = alipayConstant.getProductCode();
 
+        String bizContent = "{\"out_trade_no\":\""+ out_trade_no +"\","
+                + "\"total_amount\":\""+ total_amount +"\","
+                + "\"subject\":\""+ subject +"\","
+                + "\"body\":\""+ body +"\","
+                + "\"timeout_express\":\""+ timeout_express +"\","
+                //     + "\"goods_detail\":[{\"goods_id\":\""+ id +"\",\"goods_name\":\""+ kind +"\"}],"
+                + "\"product_code\":\"FAST_INSTANT_TRADE_PAY\"}";
         if(null!=total_amount) { //支付金额不等于空
-            alipayRequest.setBizContent("{\"out_trade_no\":\""+ out_trade_no +"\","
-                    + "\"total_amount\":\""+ total_amount +"\","
-                    + "\"subject\":\""+ subjectTest +"\","
-                    + "\"body\":\""+ bodys +"\","
-                    + "\"timeout_express\":\""+ timeout_express +"\","
-//                    + "\"passback_params2\":\"{ab=测试一下;tdst=公共参数;ccsd=gds；dfa=23·12}\","
-                    + "\"product_code\":\""+ productCodeTest +"\"}");
+            alipayRequest.setBizContent(bizContent);
             //请求
             String result = alipayClient.pageExecute(alipayRequest).getBody();
             return result;

@@ -32,20 +32,24 @@ public class CommodityController {
     @DubboReference
     CommodityService commodityService;
 
-    @GetMapping("/info/{commodityId}")
+    @GetMapping(value = {"/info/{commodityId}","/info"})
     public ResultType getCommodityInfo(@PathVariable(value = "commodityId",required = false)Integer commodityId){
         if(Objects.nonNull(commodityId)) {
+            /*commodityId参数不为空的时候返回参数对应的商品的信息*/
             Commodity commodity = commodityService.selectCommodityInfoById(commodityId);
             if(Objects.isNull(commodity)){
+                LOGGER.warn("Input parameter error，The error parameter is{}",commodityId);
                 return ResultType.CLIENTERROR(CommonEnum.CLIENTERROR.getCode(),
                         CommonEnum.CLIENTERROR.getMsg(),null);
             }else {
+                LOGGER.info("Parameter {} is accessed",commodityId);
                 return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(), CommonEnum.SUCCESS.getMsg(), commodity);
             }
         }
         else{
-            //待完善，计划参数为空时查询全部的商品信息
-            return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(),CommonEnum.SUCCESS.getMsg(),null);
+            /*当commodityId参数为空的时候，返回全部商品信息*/
+            List<Commodity> commodities = commodityService.selectCommodityInfoAll();
+            return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(),CommonEnum.SUCCESS.getMsg(),commodities);
         }
     }
 
@@ -54,9 +58,11 @@ public class CommodityController {
         if(Objects.nonNull(commodityId)) {
             List<Evaluation> evaluations = commodityService.selectEvaluationByCommodityId(commodityId);
             if(Objects.isNull(evaluations) || evaluations.size()==0){
+                LOGGER.warn("Input parameter error，The error parameter is{}",commodityId);
                 return ResultType.CLIENTERROR(CommonEnum.CLIENTERROR.getCode(),
                         CommonEnum.CLIENTERROR.getMsg(),null);
             }else {
+                LOGGER.info("Parameter {} is accessed",commodityId);
                 return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(), CommonEnum.SUCCESS.getMsg(), evaluations);
             }
         }else{

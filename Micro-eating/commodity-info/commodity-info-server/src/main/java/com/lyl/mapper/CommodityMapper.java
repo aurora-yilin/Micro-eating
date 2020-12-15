@@ -21,4 +21,6 @@ public interface CommodityMapper {
     Commodity selectCommodityInfoById(@Param("commodityId")Integer commodityId);
 
     List<Evaluation> selectEvaluationByCommodityId(@Param("commodityId")Integer commodityId);
+
+    List<Commodity> selectCommodityInfoAll();
 }

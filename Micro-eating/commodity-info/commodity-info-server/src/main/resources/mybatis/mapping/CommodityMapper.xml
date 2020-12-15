@@ -39,14 +39,23 @@
     </select>
 
     <select id="selectEvaluationByCommodityId" resultMap="EvaluationResultMap" resultType="list" parameterType="integer">
-        select
-        e.evaluation_belong_user,e.evaluation_content,e.evaluation_date,e.evaluation_id,e.evaluation_belong_commodity_id,i.image_path
+        select e.evaluation_belong_user,e.evaluation_content,e.evaluation_date,e.evaluation_id,e.evaluation_belong_commodity_id,i.image_path
         from evaluation as e
         left join
-        image as i
+        (select * from image as oi where oi.image_belong_commodity_id=#{commodityId}) as i
         on
         e.evaluation_belong_user=i.image_belong_user
         where e.evaluation_belong_commodity_id=#{commodityId};
+    </select>
+
+    <select id="selectCommodityInfoAll" resultMap="CommodityResultMap" resultType="list">
+        select
+        c.*,i.image_path
+        from commodity_info as c
+        left join image as i
+        on
+        c.commodity_id=i.image_belong_commodity_id
+        where i.image_belong_user='admin';
     </select>
 
 <!--    <insert id="saveOrder" parameterType="com.lyl.entity.Order">-->

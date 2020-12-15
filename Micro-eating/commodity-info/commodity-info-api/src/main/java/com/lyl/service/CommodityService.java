@@ -17,4 +17,6 @@ public interface CommodityService {
     Commodity selectCommodityInfoById(Integer commodityId);
 
     List<Evaluation> selectEvaluationByCommodityId(Integer commodityId);
+
+    List<Commodity> selectCommodityInfoAll();
 }

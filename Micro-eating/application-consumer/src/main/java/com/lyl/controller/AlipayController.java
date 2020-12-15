@@ -51,24 +51,30 @@ public class AlipayController {
                                   @RequestParam(value = "userName",required = false) String userName,
                                   HttpServletResponse httpServletResponse){
         try{
+            String form = null;
             //1.验证订单是否存在
             if (!StringUtils.isEmpty(orderNo)) {
                 Order order = orderService.selectOrderByOrderId(orderNo);
                 if (order == null) {
-                    createOrderRealization(userName,body,amount,httpServletResponse);
+                    form = createOrderRealization(userName, body, amount, httpServletResponse);
                 }
                 else{
                     ResultType.SUCCESS("订单已存在",null,httpServletResponse);
                 }
             }else{
-                createOrderRealization(userName,body,amount,httpServletResponse);
+                form = createOrderRealization(userName, body, amount, httpServletResponse);
             }
+            httpServletResponse.setContentType("text/html;charset=utf-8" );
+            /*直接将完整的表单html输出到页面*/
+            httpServletResponse.getWriter().write(form);
+            httpServletResponse.getWriter().flush();
+            httpServletResponse.getWriter().close();
         }catch (Exception e){
 //            return ResultType.SERVERERROR(CommonEnum.SERVERERROR.getCode(),"订单生成失败",null);
         }
     }
 
-    private void createOrderRealization(String userName,String body,double amount,HttpServletResponse httpServletResponse) throws IOException, AlipayApiException {
+    private String createOrderRealization(String userName,String body,double amount,HttpServletResponse httpServletResponse) throws IOException, AlipayApiException {
         Order orderInfo = new Order();
         orderInfo.setOrderId(UUID.randomUUID().toString().replace("-",""));
         orderInfo.setUserName(userName);
@@ -81,11 +87,12 @@ public class AlipayController {
         Integer integer = orderService.saveOrder(orderInfo);
 
         String form = alipayService.createOrder(orderInfo.getOrderId(), amount, body);
-        httpServletResponse.setContentType("text/html;charset=utf-8" );
-        /*直接将完整的表单html输出到页面*/
-        httpServletResponse.getWriter().write(form);
-        httpServletResponse.getWriter().flush();
-        httpServletResponse.getWriter().close();
+//        httpServletResponse.setContentType("text/html;charset=utf-8" );
+//        /*直接将完整的表单html输出到页面*/
+//        httpServletResponse.getWriter().write(form);
+//        httpServletResponse.getWriter().flush();
+//        httpServletResponse.getWriter().close();
+        return form;
     }
 
     @RequestMapping("/notify")
