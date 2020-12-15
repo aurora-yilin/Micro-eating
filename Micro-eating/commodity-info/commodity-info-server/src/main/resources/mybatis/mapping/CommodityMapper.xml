@@ -52,30 +52,24 @@
         select
         c.*,i.image_path
         from commodity_info as c
-        left join image as i
+        left join
+        (select * from image where image_belong_user='admin') as i
         on
-        c.commodity_id=i.image_belong_commodity_id
-        where i.image_belong_user='admin';
+        c.commodity_id=i.image_belong_commodity_id;
     </select>
 
-<!--    <insert id="saveOrder" parameterType="com.lyl.entity.Order">-->
-<!--        insert into-->
-<!--            OrderInfo(order_id, user_name, order_subject, order_body, order_statu, order_pay_mode)-->
-<!--        values(-->
-<!--            #{orderInfo.orderId},#{orderInfo.userName},#{orderInfo.orderSubject},#{orderInfo.orderBody},#{orderInfo.orderStatu},#{orderInfo.orderPayMode}-->
-<!--        );-->
-<!--    </insert>-->
+    <insert id="saveCommodity" parameterType="com.lyl.entity.Commodity" useGeneratedKeys="true" keyProperty="commodityId" keyColumn="commodity_id">
+        insert into
+        commodity_info(commodity_name, commodity_Details, commodity_price)
+        values
+        (#{commodity.commodityName},#{commodity.commodityDetails},#{commodity.commodityPrice});
+    </insert>
 
-<!--    <update id="updateOrderByOrderId" parameterType="string">-->
-<!--        update OrderInfo set  order_statu=#{status} where order_id=#{orderId}-->
-<!--    </update>-->
-
-<!--    <select id="selectOrderByUserName" resultMap="orderResultMap" resultType="list">-->
-<!--        select * from OrderInfo;-->
-<!--    </select>-->
-
-<!--    <delete id="deleteOrderByOrderId" parameterType="string">-->
-<!--        delete from OrderInfo where order_id=#{orderId}-->
-<!--    </delete>-->
+    <insert id="saveCommodityImage" parameterType="com.lyl.entity.Image">
+        insert into
+        image(image_path, image_belong_user, image_belong_commodity_id)
+        VALUES
+        (#{image.imagePath},#{image.imageBelongUser},#{image.imageBelongCommodityId})
+    </insert>
 
 </mapper>

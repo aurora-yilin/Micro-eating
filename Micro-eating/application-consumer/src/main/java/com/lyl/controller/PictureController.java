@@ -36,6 +36,12 @@ public class PictureController {
     @DubboReference
     private PicturesService picturesService;
 
+    /**
+     * 根据url地址来获取相关的图片
+     * @param pictureName
+     * @param response
+     * @throws IOException
+     */
     @GetMapping("/getPicture/{pictureName}")
     public void getPicture(@PathVariable("pictureName") String pictureName, HttpServletResponse response) throws IOException {
         ServletOutputStream outputStream = null;
@@ -64,6 +70,11 @@ public class PictureController {
         }
     }
 
+    /**
+     * 上传图片
+     * @param multipartFile
+     * @return
+     */
     @PostMapping("/admin/saveImage")
     public ResultType saveimage(@RequestParam("file") MultipartFile multipartFile){
         if (multipartFile.isEmpty()) {

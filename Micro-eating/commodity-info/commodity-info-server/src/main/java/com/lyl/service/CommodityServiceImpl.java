@@ -2,8 +2,11 @@ package com.lyl.service;
 
 import com.lyl.entity.Commodity;
 import com.lyl.entity.Evaluation;
+import com.lyl.entity.Image;
 import com.lyl.mapper.CommodityMapper;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -34,5 +37,20 @@ public class CommodityServiceImpl implements CommodityService{
     @Override
     public List<Commodity> selectCommodityInfoAll() {
         return commodityMapper.selectCommodityInfoAll();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public Integer saveCommodity(Commodity commodity) {
+        Integer commodityResult = commodityMapper.saveCommodity(commodity);
+        Integer imageResult = null;
+        Image image = new Image();
+        for (String imagepath : commodity.getImagePath()) {
+            image.setImagePath(imagepath);
+            image.setImageBelongUser("admin");
+            image.setImageBelongCommodityId(commodity.getCommodityId());
+            imageResult = commodityMapper.saveCommodityImage(image);
+        }
+        return Integer.sum(commodityResult,imageResult);
     }
 }

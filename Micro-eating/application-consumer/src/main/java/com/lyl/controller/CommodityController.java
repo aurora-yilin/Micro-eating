@@ -8,10 +8,7 @@ import com.lyl.service.CommodityService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -32,6 +29,11 @@ public class CommodityController {
     @DubboReference
     CommodityService commodityService;
 
+    /**
+     * 获取商品的信息，根据url地址的不同返回单个商品的信息或者全部商品的信息
+     * @param commodityId
+     * @return
+     */
     @GetMapping(value = {"/info/{commodityId}","/info"})
     public ResultType getCommodityInfo(@PathVariable(value = "commodityId",required = false)Integer commodityId){
         if(Objects.nonNull(commodityId)) {
@@ -53,6 +55,11 @@ public class CommodityController {
         }
     }
 
+    /**
+     * 获取商品的相关评价信息
+     * @param commodityId
+     * @return
+     */
     @GetMapping("/evaluation/{commodityId}")
     public ResultType getCommodityEvaluation(@PathVariable("commodityId")Integer commodityId){
         if(Objects.nonNull(commodityId)) {
@@ -68,6 +75,23 @@ public class CommodityController {
         }else{
             return ResultType.CLIENTERROR(CommonEnum.CLIENTERROR.getCode(),
                     CommonEnum.CLIENTERROR.getMsg(),null);
+        }
+    }
+
+    /**
+     * 添加商品信息及商品图片路径
+     * @param commodity
+     * @return
+     */
+    @PostMapping("/save")
+    public ResultType saveCommodity(@RequestBody Commodity commodity){
+        if (Objects.isNull(commodity)) {
+            return ResultType.CLIENTERROR(CommonEnum.CLIENTERROR.getCode(),
+                    CommonEnum.CLIENTERROR.getMsg(),null);
+        }else{
+            Integer result = commodityService.saveCommodity(commodity);
+            LOGGER.info("Added new products");
+            return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(),CommonEnum.SUCCESS.getMsg(),result);
         }
     }
 }

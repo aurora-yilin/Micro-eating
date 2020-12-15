@@ -2,6 +2,7 @@ package com.lyl.mapper;
 
 import com.lyl.entity.Commodity;
 import com.lyl.entity.Evaluation;
+import com.lyl.entity.Image;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
@@ -23,4 +24,8 @@ public interface CommodityMapper {
     List<Evaluation> selectEvaluationByCommodityId(@Param("commodityId")Integer commodityId);
 
     List<Commodity> selectCommodityInfoAll();
+
+    Integer saveCommodity(@Param("commodity") Commodity commodity);
+
+    Integer saveCommodityImage(@Param("image")Image image);
 }

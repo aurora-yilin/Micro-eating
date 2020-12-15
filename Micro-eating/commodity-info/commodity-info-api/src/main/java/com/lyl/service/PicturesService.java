@@ -10,7 +10,17 @@ import java.io.File;
  * @since 1.0.0
  **/
 public interface PicturesService {
+
+    /**
+     * 获取图片
+     * @param pictureName
+     * @return
+     */
     File getPicture(String pictureName);
 
+    /**
+     * 上传图片
+     * @return
+     */
     File uploadPicture();
 }
