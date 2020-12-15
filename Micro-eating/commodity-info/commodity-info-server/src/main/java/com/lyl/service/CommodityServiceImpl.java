@@ -5,6 +5,7 @@ import com.lyl.entity.Evaluation;
 import com.lyl.entity.Image;
 import com.lyl.mapper.CommodityMapper;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.springframework.dao.DataAccessException;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,12 +46,27 @@ public class CommodityServiceImpl implements CommodityService{
         Integer commodityResult = commodityMapper.saveCommodity(commodity);
         Integer imageResult = null;
         Image image = new Image();
-        for (String imagepath : commodity.getImagePath()) {
-            image.setImagePath(imagepath);
+        for (String imagePath : commodity.getImagePath()) {
+            image.setImagePath(imagePath);
             image.setImageBelongUser("admin");
             image.setImageBelongCommodityId(commodity.getCommodityId());
             imageResult = commodityMapper.saveCommodityImage(image);
         }
         return Integer.sum(commodityResult,imageResult);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public Integer saveEvaluationByCommodity(Evaluation evaluation) throws DataAccessException {
+        Integer evaluationResult = commodityMapper.saveEvaluationByCommodity(evaluation);
+        Integer imageResult = null;
+        Image image = new Image();
+        for (String imagePath : evaluation.getEvaluationImagePath()) {
+            image.setImagePath(imagePath);
+            image.setImageBelongUser(evaluation.getEvaluationBelongUser());
+            image.setImageBelongCommodityId(Integer.parseInt(evaluation.getEvaluationBelongCommodity_id()));
+            imageResult = commodityMapper.saveCommodityImage(image);
+        }
+        return Integer.sum(evaluationResult,imageResult);
     }
 }

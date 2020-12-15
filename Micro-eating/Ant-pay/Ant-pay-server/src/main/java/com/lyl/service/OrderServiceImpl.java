@@ -37,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Integer updateOrderByOrderId(Integer status, String orderId) {
-        return orderMapper.updateOrderByOrderId(status,orderId);
+        return orderMapper.updateOrderByOrderId(String.valueOf(status),orderId);
     }
 
     @Override

@@ -20,7 +20,7 @@ public interface OrderMapper {
 
     Integer saveOrder(@Param("orderInfo")Order orderInfo);
 
-    Integer updateOrderByOrderId(@Param("Status") Integer status, @Param("orderId")String orderId);
+    Integer updateOrderByOrderId(@Param("status") String status, @Param("orderId")String orderId);
 
     List<Order> selectOrderByUserName(@Param("userName")String userName);
 

@@ -2,6 +2,7 @@ package com.lyl.service;
 
 import com.lyl.entity.Commodity;
 import com.lyl.entity.Evaluation;
+import org.springframework.dao.DataAccessException;
 
 import java.util.List;
 
@@ -40,4 +41,11 @@ public interface CommodityService {
      * @return
      */
     Integer saveCommodity(Commodity commodity);
+
+    /**
+     * 添加评论
+     * @param evaluation
+     * @return
+     */
+    Integer saveEvaluationByCommodity(Evaluation evaluation) throws DataAccessException;
 }

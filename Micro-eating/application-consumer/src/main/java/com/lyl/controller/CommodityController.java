@@ -8,6 +8,7 @@ import com.lyl.service.CommodityService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataAccessException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -91,6 +92,19 @@ public class CommodityController {
         }else{
             Integer result = commodityService.saveCommodity(commodity);
             LOGGER.info("Added new products");
+            return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(),CommonEnum.SUCCESS.getMsg(),result);
+        }
+    }
+
+    @PostMapping("/save/evaluation")
+    public ResultType saveEvaluation(@RequestBody Evaluation evaluation) throws DataAccessException{
+        if (Objects.isNull(evaluation)) {
+            return ResultType.CLIENTERROR(CommonEnum.CLIENTERROR.getCode(),
+                    CommonEnum.CLIENTERROR.getMsg(),null);
+        }else{
+            Integer result = null;
+            result = commodityService.saveEvaluationByCommodity(evaluation);
+            LOGGER.info("Added a comment for {}",evaluation.getEvaluationBelongCommodity_id());
             return ResultType.SUCCESS(CommonEnum.SUCCESS.getCode(),CommonEnum.SUCCESS.getMsg(),result);
         }
     }

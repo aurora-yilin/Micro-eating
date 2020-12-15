@@ -5,6 +5,7 @@ import com.lyl.entity.Evaluation;
 import com.lyl.entity.Image;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -27,5 +28,7 @@ public interface CommodityMapper {
 
     Integer saveCommodity(@Param("commodity") Commodity commodity);
 
-    Integer saveCommodityImage(@Param("image")Image image);
+    Integer saveCommodityImage(@Param("image")Image image) throws DataAccessException;
+
+    Integer saveEvaluationByCommodity(@Param("evaluation")Evaluation evaluation);
 }

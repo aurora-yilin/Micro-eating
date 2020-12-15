@@ -72,4 +72,11 @@
         (#{image.imagePath},#{image.imageBelongUser},#{image.imageBelongCommodityId})
     </insert>
 
+    <insert id="saveEvaluationByCommodity" parameterType="com.lyl.entity.Evaluation" useGeneratedKeys="true" keyProperty="evaluationId" keyColumn="evaluation_id">
+        insert into
+        evaluation(evaluation_content, evaluation_belong_user, evaluation_belong_commodity_id)
+        VALUES
+        (#{evaluation.evaluationContent},#{evaluation.evaluationBelongUser},#{evaluation.evaluationBelongCommodity_id});
+    </insert>
+
 </mapper>
